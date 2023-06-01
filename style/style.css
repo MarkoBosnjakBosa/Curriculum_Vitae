@@ -1,0 +1,99 @@
+.position {
+  margin: auto;
+}
+h1, embed {
+  margin: 20px 0px 20px 0px;
+}
+.login, .password, .pageNotFound {
+  max-width: 400px;
+}
+.profile, .skills, .contacts {
+  max-width: 900px;
+}
+.portfolio, .resume, .downloads {
+  max-width: 1400px;
+}
+.overview {
+  width: 900px;
+}
+.information {
+  background-color: #f2f2f2;
+  padding: 10px 0px 10px 20px;
+}
+.contact {
+  margin-top: 10px;
+}
+.date {
+  float: left;
+}
+.page {
+  margin-right: 10px;
+}
+.countryCodePrefix {
+  background-color: #fff;
+}
+.btn-group {
+  height: 38px;
+}
+.image {
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+.logo {
+  height: 50px;
+  width: 50px;
+}
+.flag {
+  height: 20px;
+  width: 20px;
+}
+.upload {
+  width: 100%;
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px 6px 12px;
+}
+.height {
+  height: 400px;
+}
+.radius {
+  border-radius: 10px;
+}
+.center {
+  text-align: center;
+}
+.pointer {
+  cursor: pointer;
+}
+.icon {
+  margin-right: 5px;
+}
+a, a:hover {
+  color: #000;
+  text-decoration: none;
+}
+.padded {
+  padding-top: 20px !important;
+}
+.action {
+  float: right;
+}
+.type {
+  text-transform: capitalize;
+}
+.top {
+  margin-top: 20px;
+}
+.left {
+  margin-left: 5px;
+}
+.success {
+  color: #008000;
+}
+.error {
+  color: #ff0000;
+}
+input[type="file"], #usernameError, #passwordError, #firstNameError, #lastNameError, #emailError, #telephoneError, #birthdayError, #birthday_deError, #addressError, #address_deError, #languagesError, #languages_deError, #professionError, #profession_deError, #linkedInError, #xingError, #gitHubError, #titleError, #linkError, #typeError, #logoError, #titleEditError, #linkEditError, #typeEditError, #logoEditError, #title_deError, #workPlaceError, #workPlace_deError, #durationError, #duration_deError, #descriptionError, #description_deError {
+  display: none;
+}

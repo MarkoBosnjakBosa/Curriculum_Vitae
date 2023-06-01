@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Contacts</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Marko Bošnjak">
+    <meta name="description" content="Curriculum Vitae">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="<%= baseUrl %>/images/cvFavicon.ico" rel="icon">
+    <link href="/stylesheets/fontawesome/css/all.css" rel="stylesheet" type="text/css">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../style/page.css" rel="stylesheet" type="text/css">
+    <link href="../style/style.css" rel="stylesheet" type="text/css">
+    <script src="/popper/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/jquery/jquery.js"></script>
+    <script type="module" src="../handlers/contacts.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="d-flex" id="pageContent">
+        <%- include("components/sidebar.html", { baseUrl: `${baseUrl}` }); %>
+        <div id="pageStyle">
+          <%- include("components/navigation.html", { baseUrl: `${baseUrl}` }); %>
+          <h1 class="center">Contacts</h1>
+          <div class="contacts position">
+            <form id="contactsForm" autocomplete="off" novalidate>
+              <div class="row">
+                <div class="mb-3 col-4">
+                  <input type="text" id="search" class="form-control" placeholder="Search" />
+                </div>
+                <div class="mb-3 col-4">
+                  <input type="number" id="limit" min="1" class="form-control" value="10" />
+                </div>
+                <div class="mb-3 col-2">
+                  <select id="orderBy" class="form-control">
+                    <option value="" selected>Order by</option>
+                    <option value="asc">ASC &#129045;</option>
+                    <option value="desc">DESC &#129047;</option>
+                  </select>
+                </div>
+                <div class="btn-group mb-3 col-2">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="button" id="total" class="btn btn-dark" title="Total: <%= total %>"><%= total %></button>
+                </div>
+              </div>
+            </form>
+            <div class="mb-3 cards">
+              <% contacts.forEach((contact) => { %>
+                <div class="card contact">
+                  <div class="card-header">
+                    <%= contact.email %>
+                    <img src="../images/<%= contact.isGerman ? 'german' : 'american' %>Flag.png" alt="<%= contact.isGerman ? 'German' : 'American' %> flag" class="img-fluid flag" />
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title"><%= contact.name %></h5>
+                    <p class="card-text"><%= contact.message %></p>
+                  </div>
+                  <div class="card-footer">
+                    <div class="date">
+                      <button type="button" class="btn btn-dark"><%= new Date(contact.date).toLocaleString("de-DE", { dateStyle: "medium", timeStyle: "short" }) %></button>
+                    </div>
+                    <div class="action">
+                      <a href="mailto:<%= contact.email %>?subject=<%= user.firstName %> <%= user.lastName %> - <%= new Date(contact.date).toLocaleString(contact.isGerman ? 'de-DE' : 'en-US', { dateStyle: 'medium', timeStyle: 'short' }) %>" class="btn btn-primary">Reply <i class="fas fa-envelope"></i></a>
+                      <button type="button" class="btn btn-<%= contact.isAnswered ? 'success' : 'danger' %> isAnswered" contact="<%= contact._id %>" answered="<%= !contact.isAnswered %>"><i class="fas fa-<%= contact.isAnswered ? 'check' : 'times' %>"></i></button>
+                      <button type="button" class="btn btn-secondary deleteContact" data-id="<%= contact._id %>"><i class="fas fa-trash"></i></button>
+                    </div>
+                  </div>
+                </div>
+              <% }); %>
+            </div>
+            <div class="mb-3 pages center">
+              <button type="button" id="page" class="btn btn-dark page" data-page="<%= page %>"><%= page %></button>
+              <% if(page < pagesNumber) { %>
+                <button type="button" class="btn btn-dark page" data-page="<%= page + 1 %>"><i class="fas fa-angle-double-right"></i></button>
+              <% } %>
+            </div>
+            <%- include("components/notification.html"); %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Skills</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Marko Bošnjak">
+    <meta name="description" content="Curriculum Vitae">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="<%= baseUrl %>/images/cvFavicon.ico" rel="icon">
+    <link href="/stylesheets/fontawesome/css/all.css" rel="stylesheet" type="text/css">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../style/page.css" rel="stylesheet" type="text/css">
+    <link href="../style/style.css" rel="stylesheet" type="text/css">
+    <script src="/popper/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/jquery/jquery.js"></script>
+    <script type="module" src="../handlers/skills.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="d-flex" id="pageContent">
+        <%- include("components/sidebar.html", { baseUrl: `${baseUrl}` }); %>
+        <div id="pageStyle">
+          <%- include("components/navigation.html", { baseUrl: `${baseUrl}` }); %>
+          <h1 class="center">Skills</h1>
+          <div class="mb-3 skills position">
+            <form id="skillForm" autocomplete="off" novalidate>
+              <div class="row">
+                <div class="mb-3 col-10">
+                  <input type="text" id="title" class="form-control" placeholder="Title" />
+                  <small id="titleError" class="form-text error">Please provide a valid title!</small>
+                </div>
+                <div class="btn-group mb-3 col-2">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="button" id="reset" class="btn btn-danger">Reset</button>
+                </div>
+              </div>
+            </form>
+            <table id="skillsTable" class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Title</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% skills.forEach((skill, index) => { %>
+                  <tr id="<%= skill._id %>">
+                    <th><%= ++index %></th>
+                    <td><%= skill.title %></td>
+                    <td><i class="fas fa-pen displaySkill pointer icon" data-id="<%= skill._id %>"></i><i class="fas fa-trash deleteSkill pointer icon" data-id="<%= skill._id %>"></i></td>
+                  </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+          <div id="skill" class="modal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <form id="skillEditForm" autocomplete="off" novalidate>
+                  <div class="modal-header">
+                    <h5 class="modal-title">Edit skill</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+                  <div class="modal-body">
+                    <input type="hidden" id="skillId" />
+                    <input type="hidden" id="index" />
+                    <div class="mb-3">
+                      <div class="input-group">
+                        <label for="titleEdit" class="input-group-text">Title</label>
+                        <input type="text" id="titleEdit" class="form-control" />
+                      </div>
+                      <small id="titleEditError" class="form-text error">Please provide a valid title!</small>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <%- include("components/notification.html"); %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

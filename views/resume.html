@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Resume</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Marko Bošnjak">
+    <meta name="description" content="Curriculum Vitae">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="<%= baseUrl %>/images/cvFavicon.ico" rel="icon">
+    <link href="/stylesheets/fontawesome/css/all.css" rel="stylesheet" type="text/css">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../style/page.css" rel="stylesheet" type="text/css">
+    <link href="../style/style.css" rel="stylesheet" type="text/css">
+    <script src="/popper/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/jquery/jquery.js"></script>
+    <script type="module" src="../handlers/resume.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="d-flex" id="pageContent">
+        <%- include("components/sidebar.html", { baseUrl: `${baseUrl}` }); %>
+        <div id="pageStyle">
+          <%- include("components/navigation.html", { baseUrl: `${baseUrl}` }); %>
+          <h1 class="center">Resume</h1>
+          <div class="resume position">
+            <div class="mb-3 center">
+              <button type="button" class="btn btn-primary btn-lg displayResumeItem">Create</button>
+            </div>
+            <div class="nav nav-tabs justify-content-center" role="tablist">
+              <button type="button" id="experienceResumeNavTab" data-bs-toggle="tab" data-bs-target="#experienceResumeTab" class="nav-link active" role="tab">Experience</button>
+              <button type="button" id="educationResumeNavTab" data-bs-toggle="tab" data-bs-target="#educationResumeTab" class="nav-link" role="tab">Education</button>
+            </div>
+            <div class="tab-content">
+              <div id="experienceResumeTab" class="tab-pane fade active show">
+                <table id="experienceResumeTable" class="table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th></th>
+                      <th>Title</th>
+                      <th>Work place</th>
+                      <th>Duration</th>
+                      <th>Description</th>
+                      <th>Type</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% experienceResume.forEach((resumeItem, index) => { %>
+                      <tr id="<%= resumeItem._id %>">
+                        <th rowspan="2"><%= ++index %></th>
+                        <td rowspan="2">
+                          <img src="<%= baseUrl %>/images/americanFlag.png" alt="American flag" class="img-fluid flag" /><br />
+                          <img src="<%= baseUrl %>/images/germanFlag.png" alt="German flag" class="img-fluid flag" />
+                        </td>
+                        <td rowspan="2">
+                          <%= resumeItem.title %><br />
+                          <%= resumeItem.title_de %>
+                        </td>
+                        <td rowspan="2">
+                          <%= resumeItem.workPlace %><br />
+                          <%= resumeItem.workPlace_de %>
+                        </td>
+                        <td rowspan="2">
+                          <%= resumeItem.duration %><br />
+                          <%= resumeItem.duration_de %>
+                        </td>
+                        <td rowspan="2">
+                          <%= resumeItem.description %><br />
+                          <%= resumeItem.description_de %>
+                        </td>
+                        <td rowspan="2" class="type"><%= resumeItem.type %></td>
+                        <td rowspan="2"><i class="fas fa-pen displayResumeItem pointer icon" data-id="<%= resumeItem._id %>"></i><i class="fas fa-trash deleteResumeItem pointer icon" data-id="<%= resumeItem._id %>"></i></td>
+                      </tr>
+                      <tr id="empty_<%= resumeItem._id %>"></tr>
+                    <% }); %>
+                  </tbody>
+                </table>
+                <div class="mb-3 action">
+                  <button type="button" class="btn btn-dark next" data-tab="education">Next <i class="fas fa-angle-double-right"></i></button>
+                </div>
+              </div>
+              <div id="educationResumeTab" class="tab-pane fade">
+                <table id="educationResumeTable" class="table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th></th>
+                      <th>Title</th>
+                      <th>Work place</th>
+                      <th>Duration</th>
+                      <th>Description</th>
+                      <th>Type</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% educationResume.forEach((resumeItem, index) => { %>
+                      <tr id="<%= resumeItem._id %>">
+                        <th rowspan="2"><%= ++index %></th>
+                        <td rowspan="2">
+                          <img src="<%= baseUrl %>/images/americanFlag.png" alt="American flag" class="img-fluid flag" /><br />
+                          <img src="<%= baseUrl %>/images/germanFlag.png" alt="German flag" class="img-fluid flag" />
+                        </td>
+                        <td rowspan="2">
+                          <%= resumeItem.title %><br />
+                          <%= resumeItem.title_de %>
+                        </td>
+                        <td rowspan="2">
+                          <%= resumeItem.workPlace %><br />
+                          <%= resumeItem.workPlace_de %>
+                        </td>
+                        <td rowspan="2">
+                          <%= resumeItem.duration %><br />
+                          <%= resumeItem.duration_de %>
+                        </td>
+                        <td rowspan="2">
+                          <%= resumeItem.description %><br />
+                          <%= resumeItem.description_de %>
+                        </td>
+                        <td rowspan="2" class="type"><%= resumeItem.type %></td>
+                        <td rowspan="2"><i class="fas fa-pen displayResumeItem pointer icon" data-id="<%= resumeItem._id %>"></i><i class="fas fa-trash deleteResumeItem pointer icon" data-id="<%= resumeItem._id %>"></i></td>
+                      </tr>
+                      <tr id="empty_<%= resumeItem._id %>"></tr>
+                    <% }); %>
+                  </tbody>
+                </table>
+                <div class="mb-3">
+                  <button type="button" class="btn btn-dark back" data-tab="experience"><i class="fas fa-angle-double-left"></i> Back</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="resumeItem" class="modal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <form id="resumeItemForm" autocomplete="off" novalidate>
+                  <div class="modal-header">
+                    <h5 class="modal-title">Save resume item</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+                  <div class="modal-body">
+                    <input type="hidden" id="resumeItemId" />
+                    <input type="hidden" id="index" />
+                    <input type="hidden" id="oldType" />
+                    <input type="hidden" id="create" />
+                    <div class="mb-3">
+                      <div class="input-group">
+                        <label for="title" class="input-group-text">Title</label>
+                        <input type="text" id="title" class="form-control" />
+                      </div>
+                      <small id="titleError" class="form-text error">Please provide a valid title!</small>
+                    </div>
+                    <div class="mb-3">
+                      <div class="input-group">
+                        <label for="title_de" class="input-group-text">Title DE</label>
+                        <input type="text" id="title_de" class="form-control" />
+                      </div>
+                      <small id="title_deError" class="form-text error">Please provide a valid title in German!</small>
+                    </div>
+                    <div class="mb-3">
+                      <div class="input-group">
+                        <label for="workPlace" class="input-group-text">Work place</label>
+                        <input type="text" id="workPlace" class="form-control" />
+                      </div>
+                      <small id="workPlaceError" class="form-text error">Please provide a valid work place!</small>
+                    </div>
+                    <div class="mb-3">
+                      <div class="input-group">
+                        <label for="workPlace_de" class="input-group-text">Work place DE</label>
+                        <input type="text" id="workPlace_de" class="form-control" />
+                      </div>
+                      <small id="workPlace_deError" class="form-text error">Please provide a valid work place in German!</small>
+                    </div>
+                    <div class="mb-3">
+                      <div class="input-group">
+                        <label for="duration" class="input-group-text">Duration</label>
+                        <input type="text" id="duration" class="form-control" />
+                      </div>
+                      <small id="durationError" class="form-text error">Please provide a valid duration!</small>
+                    </div>
+                    <div class="mb-3">
+                      <div class="input-group">
+                        <label for="duration_de" class="input-group-text">Duration DE</label>
+                        <input type="text" id="duration_de" class="form-control" />
+                      </div>
+                      <small id="duration_deError" class="form-text error">Please provide a valid duration in German!</small>
+                    </div>
+                    <div class="mb-3">
+                      <div class="input-group">
+                        <label for="description" class="input-group-text">Description</label>
+                        <textarea id="description" class="form-control"></textarea>
+                      </div>
+                      <small id="descriptionError" class="form-text error">Please provide a valid description!</small>
+                    </div>
+                    <div class="mb-3">
+                      <div class="input-group">
+                        <label for="description_de" class="input-group-text">Description DE</label>
+                        <textarea id="description_de" class="form-control"></textarea>
+                      </div>
+                      <small id="description_deError" class="form-text error">Please provide a valid description in German!</small>
+                    </div>
+                    <div class="input-group">
+                      <label for="type" class="input-group-text">Type</label>
+                      <select id="type" class="form-control">
+                        <option value="">Type</option>
+                        <option value="experience">Experience</option>
+                        <option value="education">Education</option>
+                      </select>
+                    </div>
+                    <small id="typeError" class="form-text error">Please provide a valid type!</small>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <%- include("components/notification.html"); %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

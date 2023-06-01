@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Overview</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Marko Bošnjak">
+    <meta name="description" content="Curriculum Vitae">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="<%= baseUrl %>/images/cvFavicon.ico" rel="icon">
+    <link href="/stylesheets/fontawesome/css/all.css" rel="stylesheet" type="text/css">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../style/page.css" rel="stylesheet" type="text/css">
+    <link href="../style/style.css" rel="stylesheet" type="text/css">
+    <script src="/popper/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/jquery/jquery.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="d-flex" id="pageContent">
+        <%- include("components/sidebar.html", { baseUrl: `${baseUrl}` }); %>
+        <div id="pageStyle">
+          <%- include("components/navigation.html", { baseUrl: `${baseUrl}` }); %>
+          <h1 class="center">Overview</h1>
+          <div class="mb-3 overview position">
+            <div class="row">
+              <div class="col-6 information height radius">
+                <div class="row">
+                  <div class="col-1">
+                    <i class="fas fa-user"></i><br />
+                    <i class="fas fa-pencil-alt"></i><br />
+                    <i class="fas fa-pen"></i><br />
+                    <i class="fas fa-envelope"></i><br />
+                    <i class="fas fa-mobile-alt"></i><br />
+                    <i class="fas fa-birthday-cake"></i><br />
+                    <i class="fas fa-birthday-cake"></i><br />
+                    <i class="fas fa-location-arrow"></i><br />
+                    <i class="fas fa-location-arrow"></i><br />
+                    <i class="fas fa-globe"></i><br />
+                    <i class="fas fa-globe"></i><br />
+                    <i class="fas fa-laptop-code"></i><br />
+                    <i class="fas fa-laptop-code"></i><br />
+                    <i class="fab fa-linkedin-in"></i><br />
+                    <i class="fab fa-xing"></i><br />
+                    <i class="fab fa-github"></i>
+                  </div>
+                  <div class="col-11">
+                    <%= user.username %><br />
+                    <%= user.firstName %><br />
+                    <%= user.lastName %><br />
+                    <a href="mailto:<%= user.email %>"><%= user.email %></a><br />
+                    <%- user.telephone ? ("<a href='tel:+" + user.telephone + "'>+" + user.telephone + "</a>") : "" %><br />
+                    <%= user.birthday %><br />
+                    <%= user.birthday_de %><br />
+                    <%= user.address %><br />
+                    <%= user.address_de %><br />
+                    <%= user.languages %><br />
+                    <%= user.languages_de %><br />
+                    <%= user.profession %><br />
+                    <%= user.profession_de %><br />
+                    <a href="<%= user.linkedIn %>" target="_blank"><%= user.linkedIn %></a><br />
+                    <a href="<%= user.xing %>" target="_blank"><%= user.xing %></a><br />
+                    <a href="<%= user.gitHub %>" target="_blank"><%= user.gitHub %></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <img src="data:<%= user.avatar.mimeType %>;base64,<%= (new Buffer.from(user.avatar.buffer)).toString('base64') %>" alt="<%= user.avatar.name %>" class="img-fluid w-100 height radius" />
+              </div>
+            </div>
+          </div>
+          <div class="mb-3 center">
+            <a href="<%= baseUrl %>/profile" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Edit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

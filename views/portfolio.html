@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Marko Bošnjak">
+    <meta name="description" content="Curriculum Vitae">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="<%= baseUrl %>/images/cvFavicon.ico" rel="icon">
+    <link href="/stylesheets/fontawesome/css/all.css" rel="stylesheet" type="text/css">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../style/page.css" rel="stylesheet" type="text/css">
+    <link href="../style/style.css" rel="stylesheet" type="text/css">
+    <script src="/popper/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/jquery/jquery.js"></script>
+    <script type="module" src="../handlers/portfolio.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="d-flex" id="pageContent">
+        <%- include("components/sidebar.html", { baseUrl: `${baseUrl}` }); %>
+        <div id="pageStyle">
+          <%- include("components/navigation.html", { baseUrl: `${baseUrl}` }); %>
+          <h1 class="center">Portfolio</h1>
+          <div class="portfolio position">
+            <form id="portfolioItemForm" autocomplete="off" novalidate>
+              <div class="row">
+                <div class="mb-3 col-2">
+                  <input type="text" id="title" class="form-control" placeholder="Title" />
+                  <small id="titleError" class="form-text error">Please provide a valid title!</small>
+                </div>
+                <div class="mb-3 col-3">
+                  <input type="text" id="link" class="form-control" placeholder="Link" />
+                  <small id="linkError" class="form-text error">Please provide a valid link!</small>
+                </div>
+                <div class="mb-3 col-2">
+                  <select id="type" class="form-control">
+                    <option value="" selected>Type</option>
+                    <option value="work">Work</option>
+                    <option value="personal">Personal</option>
+                    <option value="academic">Academic</option>
+                  </select>
+                  <small id="typeError" class="form-text error">Please provide a valid type!</small>
+                </div>
+                <div class="mb-3 col-3">
+                  <label for="logo" class="upload center radius pointer"><i class="fas fa-cloud-upload-alt"></i> <span id="logoName">Upload</span></label>
+                  <input type="file" accept="image/*" id="logo" class="form-control" />
+                  <small id="logoError" class="form-text error">Please provide a valid logo!</small>
+                </div>
+                <div class="btn-group mb-3 col-2">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="button" id="reset" class="btn btn-danger">Reset</button>
+                </div>
+              </div>
+            </form>
+            <div class="nav nav-tabs justify-content-center" role="tablist">
+              <button type="button" id="workPortfolioNavTab" data-bs-toggle="tab" data-bs-target="#workPortfolioTab" class="nav-link active" role="tab">Work</button>
+              <button type="button" id="personalPortfolioNavTab" data-bs-toggle="tab" data-bs-target="#personalPortfolioTab" class="nav-link" role="tab">Personal</button>
+              <button type="button" id="academicPortfolioNavTab" data-bs-toggle="tab" data-bs-target="#academicPortfolioTab" class="nav-link" role="tab">Academic</button>
+            </div>
+            <div class="tab-content">
+              <div id="workPortfolioTab" class="tab-pane fade active show">
+                <table id="workPortfolioTable" class="table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Title</th>
+                      <th>Link</th>
+                      <th>Type</th>
+                      <th>Logo</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% workPortfolio.forEach((portfolioItem, index) => { %>
+                      <tr id="<%= portfolioItem._id %>">
+                        <th class="padded"><%= ++index %></th>
+                        <td class="padded"><%= portfolioItem.title %></td>
+                        <td class="padded"><a href="<%= portfolioItem.link %>" target="_blank"><%= portfolioItem.link %></a></td>
+                        <td class="padded type"><%= portfolioItem.type %></td>
+                        <td><img src="data:<%= portfolioItem.logo.mimeType %>;base64,<%= (new Buffer.from(portfolioItem.logo.buffer)).toString('base64') %>" alt="<%= portfolioItem.logo.name %>" class="rounded img-fluid logo" /></td>
+                        <td class="padded"><i class="fas fa-pen displayPortfolioItem pointer icon" data-id="<%= portfolioItem._id %>"></i><i class="fas fa-trash deletePortfolioItem pointer icon" data-id="<%= portfolioItem._id %>"></i></td>
+                      </tr>
+                    <% }); %>
+                  </tbody>
+                </table>
+                <div class="mb-3 action">
+                  <button type="button" class="btn btn-dark next" data-tab="personal">Next <i class="fas fa-angle-double-right"></i></button>
+                </div>
+              </div>
+              <div id="personalPortfolioTab" class="tab-pane fade">
+                <table id="personalPortfolioTable" class="table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Title</th>
+                      <th>Link</th>
+                      <th>Type</th>
+                      <th>Logo</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% personalPortfolio.forEach((portfolioItem, index) => { %>
+                      <tr id="<%= portfolioItem._id %>">
+                        <th class="padded"><%= ++index %></th>
+                        <td class="padded"><%= portfolioItem.title %></td>
+                        <td class="padded"><a href="<%= portfolioItem.link %>" target="_blank"><%= portfolioItem.link %></a></td>
+                        <td class="padded type"><%= portfolioItem.type %></td>
+                        <td><img src="data:<%= portfolioItem.logo.mimeType %>;base64,<%= (new Buffer.from(portfolioItem.logo.buffer)).toString('base64') %>" alt="<%= portfolioItem.logo.name %>" class="rounded img-fluid logo" /></td>
+                        <td class="padded"><i class="fas fa-pen displayPortfolioItem pointer icon" data-id="<%= portfolioItem._id %>"></i><i class="fas fa-trash deletePortfolioItem pointer icon" data-id="<%= portfolioItem._id %>"></i></td>
+                      </tr>
+                    <% }); %>
+                  </tbody>
+                </table>
+                <div class="mb-3">
+                  <button type="button" class="btn btn-dark back" data-tab="work"><i class="fas fa-angle-double-left"></i> Back</button>
+                  <button type="button" class="btn btn-dark next action" data-tab="academic">Next <i class="fas fa-angle-double-right"></i></button>
+                </div>
+              </div>
+              <div id="academicPortfolioTab" class="tab-pane fade">
+                <table id="academicPortfolioTable" class="table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Title</th>
+                      <th>Link</th>
+                      <th>Type</th>
+                      <th>Logo</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% academicPortfolio.forEach((portfolioItem, index) => { %>
+                      <tr id="<%= portfolioItem._id %>">
+                        <th class="padded"><%= ++index %></th>
+                        <td class="padded"><%= portfolioItem.title %></td>
+                        <td class="padded"><a href="<%= portfolioItem.link %>" target="_blank"><%= portfolioItem.link %></a></td>
+                        <td class="padded type"><%= portfolioItem.type %></td>
+                        <td><img src="data:<%= portfolioItem.logo.mimeType %>;base64,<%= (new Buffer.from(portfolioItem.logo.buffer)).toString('base64') %>" alt="<%= portfolioItem.logo.name %>" class="rounded img-fluid logo" /></td>
+                        <td class="padded"><i class="fas fa-pen displayPortfolioItem pointer icon" data-id="<%= portfolioItem._id %>"></i><i class="fas fa-trash deletePortfolioItem pointer icon" data-id="<%= portfolioItem._id %>"></i></td>
+                      </tr>
+                    <% }); %>
+                  </tbody>
+                </table>
+                <div class="mb-3">
+                  <button type="button" class="btn btn-dark back" data-tab="personal"><i class="fas fa-angle-double-left"></i> Back</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="portfolioItem" class="modal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <form id="portfolioItemEditForm" autocomplete="off" novalidate>
+                  <div class="modal-header">
+                    <h5 class="modal-title">Edit portfolio item</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+                  <div class="modal-body">
+                    <input type="hidden" id="portfolioItemId" />
+                    <input type="hidden" id="index" />
+                    <input type="hidden" id="oldType" />
+                    <div class="mb-3">
+                      <div class="input-group">
+                        <label for="titleEdit" class="input-group-text">Title</label>
+                        <input type="text" id="titleEdit" class="form-control" />
+                      </div>
+                      <small id="titleEditError" class="form-text error">Please provide a valid title!</small>
+                    </div>
+                    <div class="mb-3">
+                      <div class="input-group">
+                        <label for="linkEdit" class="input-group-text">Link</label>
+                        <input type="text" id="linkEdit" class="form-control" />
+                      </div>
+                      <small id="linkEditError" class="form-text error">Please provide a valid link!</small>
+                    </div>
+                    <div class="mb-3">
+                      <div class="input-group">
+                        <label for="typeEdit" class="input-group-text">Type</label>
+                        <select id="typeEdit" class="form-control">
+                          <option value="">Type</option>
+                          <option value="work">Work</option>
+                          <option value="personal">Personal</option>
+                          <option value="academic">Academic</option>
+                        </select>
+                      </div>
+                      <small id="typeEditError" class="form-text error">Please provide a valid type!</small>
+                    </div>
+                    <div>
+                      <label for="logoEdit" class="upload center radius pointer"><i class="fas fa-cloud-upload-alt"></i> <span id="logoEditName">Upload</span></label>
+                      <input type="file" accept="image/*" id="logoEdit" class="form-control" />
+                      <small id="logoEditError" class="form-text error">Please provide a valid logo!</small>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <%- include("components/notification.html"); %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

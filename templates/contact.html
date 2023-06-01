@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="<%= contact.isGerman ? 'de' : 'en' %>">
+  <body>
+    <p><%= contact.isGerman ? "Liebe(r)" : "Dear" %> <b><%= contact.name %></b>,</p>
+    <p><%= contact.isGerman ? "vielen Dank für Ihre Kontaktaufnahme. Ich habe Ihre Nachricht um" : "thank you for getting in touch. I received your message at" %> <%= new Date(contact.date).toLocaleString(contact.isGerman ? "de-DE" : "en-US", { dateStyle: "medium", timeStyle: "short" }) %> <%= contact.isGerman ? "erhalten und werde mich so schnell wie möglich bei Ihnen melden" : "and will get back to you as soon as possible" %>.</p>
+    <p>
+      <%= contact.isGerman ? "Viele Grüße" : "Kind regards" %>,<br />
+      <%= firstName %> <%= lastName %>
+    </p>
+  </body>
+</html>

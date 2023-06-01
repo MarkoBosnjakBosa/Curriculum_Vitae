@@ -1,0 +1,48 @@
+<div class="container-fluid navigation">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarOptions" aria-expanded="false">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <button type="button" id="toggleSidebar" class="btn btn-dark"><i class="fas fa-angle-double-left"></i></button>
+    <div id="navbarOptions" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a href="<%= baseUrl %>/overview" class="nav-link">Overview</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" id="userOptions" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="far fa-user-circle"></i></a>
+          <ul class="dropdown-menu" aria-labelledby="userOptions">
+            <li><a href="<%= baseUrl %>/profile" class="dropdown-item">Profile</a></li>
+            <li><a href="<%= baseUrl %>/password" class="dropdown-item">Password</a></li>
+            <li id="logout" style="cursor: pointer"><div class="dropdown-item">Log out</div></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<script type="module">
+  import { http } from "../utilities/http.js";
+
+  $(() => {
+    $(document).on("click", "#toggleSidebar", () => {
+      const pageContent = document.getElementById("pageContent");
+      const toggleSidebar = document.getElementById("toggleSidebar");
+      const sidebar = document.getElementById("sidebar");
+      pageContent.classList.toggle("toggled");
+      if (pageContent.classList.contains("toggled")) toggleSidebar.innerHTML = "<i class='fas fa-angle-double-right'></i>";
+      else toggleSidebar.innerHTML = "<i class='fas fa-angle-double-left'></i>";
+      sidebar.classList.toggle("toggled"); 
+    });
+
+    $(document).on("click", "#logout", async () => {
+      const url = "/logout";
+      const data = { url };
+      try {
+        const response = await http(data);
+        window.open(response, "_self");
+      } catch (errors) {}
+    });
+  });
+</script>

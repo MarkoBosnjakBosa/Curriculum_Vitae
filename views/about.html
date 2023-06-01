@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="<%= isGerman ? 'de' : 'en' %>">
+  <head>
+    <title><%= isGerman ? "Über mich" : "About" %></title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Marko Bošnjak">
+    <meta name="description" content="Curriculum Vitae">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="<%= baseUrl %>/images/cvFavicon.ico" rel="icon">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet">
+    <link href="/stylesheets/fontawesome/css/all.css" rel="stylesheet" type="text/css">
+    <link href="../public/bootstrap.min.css?ver=1.1.0" rel="stylesheet">
+    <link href="../public/aos.css?ver=1.1.0" rel="stylesheet">
+    <link href="../public/about.css?ver=1.1.0" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js?render=<%= reCaptcha %>"></script>
+    <script src="../public/jquery.3.2.1.min.js?ver=1.1.0"></script>
+    <script src="../public/popper.min.js?ver=1.1.0"></script>
+    <script src="../public/bootstrap.min.js?ver=1.1.0"></script>
+    <script src="../public/now-ui-kit.js?ver=1.1.0"></script>
+    <script src="../public/aos.js?ver=1.1.0"></script>
+    <style type="text/css">
+      [data-aos] {
+        opacity: 1 !important;
+        transform: translate(0) scale(1) !important;
+      }
+      .form-control::placeholder {
+        color: #000;
+      }
+      a {
+        text-decoration: none !important;
+      }
+      .empty {
+        border-color: #ff0000 !important;
+      }
+    </style>
+  </head>
+  <body id="top">
+    <header>
+      <div class="profile-page sidebar-collapse">
+        <nav class="navbar navbar-expand-lg fixed-top navbar-transparent bg-primary" color-on-scroll="400">
+          <div class="container">
+            <div class="navbar-translate">
+              <a href="<%= baseUrl %>/about/<%= isGerman ? 'en' : 'de' %>"><img src="../images/<%= isGerman ? 'american' : 'german' %>Flag.png" style="width: 30px; height: 30px" /></a>
+              <button type="button" class="navbar-toggler navbar-toggler" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navigation">
+              <ul class="navbar-nav">
+                <li class="nav-item"><a href="#about" class="nav-link smooth-scroll"><%= isGerman ? "Über mich" : "About" %></a></li>
+                <li class="nav-item"><a href="#skills" class="nav-link smooth-scroll"><%= isGerman ? "Fähigkeiten" : "Skills" %></a></li>
+                <li class="nav-item"><a href="#portfolio" class="nav-link smooth-scroll">Portfolio</a></li>
+                <li class="nav-item"><a href="#experience" class="nav-link smooth-scroll"><%= isGerman ? "Berufserfahrung" : "Experience" %></a></li>
+                <li class="nav-item"><a href="#education" class="nav-link smooth-scroll"><%= isGerman ? "Ausbildung" : "Education" %></a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link smooth-scroll"><%= isGerman ? "Kontakt" : "Contact" %></a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <div class="page-content">
+      <div class="profile-page">
+        <div class="wrapper">
+          <div class="page-header page-header-small" filter-color="green">
+            <div class="page-header-image" data-parallax="true" style="background-image: url('../images/bridgeImage.jpg')"></div>
+            <div class="container">
+              <div class="content-center">
+                <div class="cc-profile-image"><a href="#" style="pointer-events: none; cursor: default"><img src="data:<%= user.avatar.mimeType %>;base64,<%= (new Buffer.from(user.avatar.buffer)).toString('base64') %>" alt="<%= user.avatar.name %>"/></a></div>
+                <div class="h2 title"><%= user.firstName %> <%= user.lastName %></div>
+                <p class="category text-white"><%= isGerman ? user.profession_de : user.profession %></p>
+                <a href="#contact" class="btn btn-primary smooth-scroll mr-2" data-aos="zoom-in" data-aos-anchor="data-aos-anchor"><%= isGerman ? "Kontakt" : "Contact" %></a>
+                <button type="button" id="download" class="btn btn-primary" data-language="<%= isGerman ? 'de' : 'en' %>" data-aos="zoom-in" data-aos-anchor="data-aos-anchor"><%= isGerman ? "Lebenslauf" : "Download CV" %></button>
+              </div>
+            </div>
+            <div class="section">
+              <div class="container">
+                <div class="button-container">
+                  <a href="<%= user.linkedIn %>" target="_blank" class="btn btn-default btn-round btn-lg btn-icon"><i class="fab fa-linkedin-in"></i></a>
+                  <a href="<%= user.xing %>" target="_blank" class="btn btn-default btn-round btn-lg btn-icon"><i class="fab fa-xing"></i></a>
+                  <a href="<%= user.gitHub %>" target="_blank" class="btn btn-default btn-round btn-lg btn-icon"><i class="fab fa-github"></i></a>
+                  <a href="mailto:<%= user.email %>" class="btn btn-default btn-round btn-lg btn-icon"><i class="fab fa-yahoo"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section" id="about">
+        <div class="container">
+          <div class="card" data-aos="fade-up" data-aos-offset="10">
+            <div class="row">
+              <div class="col-lg-6 col-md-12">
+                <div class="card-body">
+                  <div class="h4 mt-0 title"><%= isGerman ? "Über mich" : "About" %></div>
+                  <p><%= isGerman ? "Hallo! Ich bin" : "Hello! I am" %> <%= user.firstName %> <%= user.lastName %>. <%= isGerman ? user.profession_de : user.profession %>.</p>
+                  <p>
+                    <%= isGerman ? "Ich verwandle gerne komplexe Probleme in gut gestaltete und benutzerfreundliche Anwendungen und tendiere dazu, meinen Code sauber und organisiert zu halten" : "I enjoy turning complex problems into well-designed and user-friendly applications, while tending to keep my code clean and organized" %>.<br />
+                    <%= isGerman ? "Ich habe viel Erfahrung in der Arbeit mit Atlassian Produkten" : "I have a lot of experience in working with Atlassian products" %> (Jira, Jira Service Management, Confluence, Bitbucket).
+                    <%= isGerman ? "In meiner Freizeit baue ich gerne komplexe Websysteme, die Sie auf meinem" : "I like building complex web systems in my free time, that you can see on my" %> <a href="<%= user.gitHub %>" target="_blank">GitHub</a> <%= isGerman ? "Konto sehen können" : "account" %>.<br />
+                    <%= isGerman ? "Ich habe einen Masterabschluss" : "I have a Master's degree" %> in Computer Science.
+                  </p>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-12">
+                <div class="card-body">
+                  <div class="h4 mt-0 title"><%= isGerman ? "Informationen" : "Information" %></div>
+                  <div class="row">
+                    <div class="col-sm-4"><strong class="text-uppercase"><%= isGerman ? "Geburtstag" : "Birthday" %>:</strong></div>
+                    <div class="col-sm-8"><%= isGerman ? user.birthday_de : user.birthday %></div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-sm-4"><strong class="text-uppercase">Email:</strong></div>
+                    <div class="col-sm-8"><a href="mailto:<%= user.email %>"><%= user.email %></a></div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-sm-4"><strong class="text-uppercase"><%= isGerman ? "Telefon" : "Telephone" %>:</strong></div>
+                    <div class="col-sm-8"><%- user.telephone ? ("<a href='tel:+" + user.telephone + "'>+" + user.telephone + "</a>") : "" %></div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-sm-4"><strong class="text-uppercase"><%= isGerman ? "Adresse" : "Address" %>:</strong></div>
+                    <div class="col-sm-8"><%= isGerman ? user.address_de : user.address %></div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-sm-4"><strong class="text-uppercase"><%= isGerman ? "Sprachen" : "Languages" %>:</strong></div>
+                    <div class="col-sm-8"><%= isGerman ? user.languages_de : user.languages %></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="skills" class="section">
+        <div class="container">
+          <div class="h4 text-center mb-4 title"><%= isGerman ? "Berufliche Fähigkeiten" : "Professional skills" %></div>
+          <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+            <div class="card-body">
+              <div class="row">
+                <% skills.forEach((skill) => { %>
+                  <div class="col-md-6">
+                    <div class="progress-container progress-primary"><span class="progress-badge"><%= skill.title %></span>
+                      <div class="progress">
+                        <div class="progress-bar progress-bar-primary" data-aos="progress-full" role="progressbar" style="width: 100%"></div>
+                      </div>
+                    </div>
+                  </div>
+                <% }); %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="portfolio" class="section">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 ml-auto mr-auto">
+              <div class="h4 text-center mb-4 title">Portfolio</div>
+              <div class="nav-align-center">
+                <ul class="nav nav-pills nav-pills-primary" role="tablist">
+                  <li class="nav-item"><a href="#workPortfolio" class="nav-link active" data-toggle="tab" role="tablist"><i class="fab fa-atlassian" aria-hidden="true"></i></a></li>
+                  <li class="nav-item"><a href="#personalPortfolio" class="nav-link" data-toggle="tab" role="tablist"><i class="fab fa-node-js" aria-hidden="true"></i></a></li>
+                  <li class="nav-item"><a href="#academicPortfolio" class="nav-link" data-toggle="tab" role="tablist"><i class="fab fa-php" aria-hidden="true"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="tab-content gallery mt-5">
+            <div id="workPortfolio" class="tab-pane active" role="tabpanel">
+              <div class="ml-auto mr-auto">
+                <div class="row">
+                  <% portfolio.workPortfolio.forEach((portfolioItem) => { %>
+                    <div class="col-md-6">
+                      <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                        <a href="<%= portfolioItem.link %>" target="_blank">
+                          <figure class="cc-effect">
+                            <img src="data:<%= portfolioItem.logo.mimeType %>;base64,<%= (new Buffer.from(portfolioItem.logo.buffer)).toString('base64') %>" alt="<%= portfolioItem.logo.name %>" style="height: 300px; width: 100%" />
+                            <figcaption>
+                              <div class="h4"><%= portfolioItem.title %></div>
+                              <p><%= isGerman ? "Arbeitsprojekt" : "Work project" %></p>
+                            </figcaption>
+                          </figure>
+                        </a>
+                      </div>
+                    </div>
+                  <% }); %>
+                </div>
+              </div>
+            </div>
+            <div id="personalPortfolio" class="tab-pane" role="tabpanel">
+              <div class="ml-auto mr-auto">
+                <div class="row">
+                  <% portfolio.personalPortfolio.forEach((portfolioItem) => { %>
+                    <div class="col-md-6">
+                      <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                        <a href="<%= portfolioItem.link %>" target="_blank">
+                          <figure class="cc-effect">
+                            <img src="data:<%= portfolioItem.logo.mimeType %>;base64,<%= (new Buffer.from(portfolioItem.logo.buffer)).toString('base64') %>" alt="<%= portfolioItem.logo.name %>" style="height: 300px; width: 100%" />
+                            <figcaption>
+                              <div class="h4"><%= portfolioItem.name %></div>
+                              <p><%= isGerman ? "Persönliches Projekt" : "Personal project" %></p>
+                            </figcaption>
+                          </figure>
+                        </a>
+                      </div>
+                    </div>
+                  <% }); %>
+                </div>
+              </div>
+            </div>
+            <div id="academicPortfolio" class="tab-pane" role="tabpanel">
+              <div class="ml-auto mr-auto">
+                <div class="row">
+                  <% portfolio.academicPortfolio.forEach((portfolioItem) => { %>
+                    <div class="col-md-6">
+                      <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                        <a href="<%= portfolioItem.link %>" target="_blank">
+                          <figure class="cc-effect">
+                            <img src="data:<%= portfolioItem.logo.mimeType %>;base64,<%= (new Buffer.from(portfolioItem.logo.buffer)).toString('base64') %>" alt="<%= portfolioItem.logo.name %>" style="height: 300px; width: 100%" />
+                            <figcaption>
+                              <div class="h4"><%= portfolioItem.name %></div>
+                              <p><%= isGerman ? "Akademisches Projekt" : "Academic project" %></p>
+                            </figcaption>
+                          </figure>
+                        </a>
+                      </div>
+                    </div>
+                  <% }); %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="experience" class="section">
+        <div class="container cc-experience">
+          <div class="h4 text-center mb-4 title"><%= isGerman ? "Berufserfahrung" : "Work experience" %></div>
+          <% resume.experienceResume.forEach((resumeItem) => { %>
+            <div class="card">
+              <div class="row">
+                <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
+                  <div class="card-body cc-experience-header">
+                    <p><%= isGerman ? resumeItem.duration_de : resumeItem.duration %></p>
+                    <div class="h5"><%= isGerman ? resumeItem.workPlace_de : resumeItem.workPlace %></div>
+                  </div>
+                </div>
+                <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
+                  <div class="card-body">
+                    <div class="h5"><%= isGerman ? resumeItem.title_de : resumeItem.title %></div>
+                    <p><%= isGerman ? resumeItem.description_de : resumeItem.description %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+      <div id="education" class="section">
+        <div class="container cc-education">
+          <div class="h4 text-center mb-4 title"><%= isGerman ? "Ausbildung" : "Education" %></div>
+          <% resume.educationResume.forEach((resumeItem) => { %>
+            <div class="card">
+              <div class="row">
+                <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
+                  <div class="card-body cc-education-header">
+                    <p><%= isGerman ? resumeItem.duration_de : resumeItem.duration %></p>
+                    <div class="h5"><%= isGerman ? resumeItem.workPlace_de : resumeItem.workPlace %></div>
+                  </div>
+                </div>
+                <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
+                  <div class="card-body">
+                    <div class="h5"><%= isGerman ? resumeItem.title_de : resumeItem.title %></div>
+                    <p><%= isGerman ? resumeItem.description_de : resumeItem.description %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+      <div id="contact" class="section">
+        <div class="cc-contact-information" style="background-image: url('../images/googleMapsImage.png')">
+          <div class="container">
+            <div class="cc-contact">
+              <div class="row">
+                <div class="col-md-9">
+                  <div class="card mb-0" data-aos="zoom-in">
+                    <div class="h4 text-center title"><%= isGerman ? "Kontakt" : "Contact" %></div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="card-body">
+                          <form id="contactForm" autocomplete="off" novalidate>
+                            <div class="p pb-3"><strong><%= isGerman ? "Kontaktieren Sie mich gerne" : "Feel free to contact me" %></strong></div>
+                            <input type="hidden" id="reCaptcha" value="<%= reCaptcha %>" />
+                            <input type="hidden" id="language" value="<%= isGerman ? 'de' : 'en' %>" />
+                            <div class="row mb-3">
+                              <div class="col">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
+                                  <input type="text" id="name" class="form-control" placeholder="Name..." />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row mb-3">
+                              <div class="col">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                  <input type="text" id="email" class="form-control" placeholder="Email..." />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row mb-3">
+                              <div class="col">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="fa fa-file-alt"></i></span>
+                                  <input type="text" id="subject" class="form-control" placeholder="<%= isGerman ? 'Betreff' : 'Subject' %>..." />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row mb-3">
+                              <div class="col">
+                                <div class="form-group">
+                                  <textarea id="message" class="form-control" placeholder="<%= isGerman ? 'Ihre Nachricht' : 'Your message' %>..."></textarea>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col">
+                                <button type="submit" class="btn btn-primary"><%= isGerman ? "Senden" : "Send" %></button>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="card-body">
+                          <p class="mb-0"><strong><%= isGerman ? "Adresse" : "Address" %></strong></p>
+                          <p class="pb-2"><%= user.address %></p>
+                          <p class="mb-0"><strong>Email</strong></p>
+                          <p class="pb-2"><a href="mailto:<%= user.email %>"><%= user.email %></a></p>
+                          <p class="mb-0"><strong><%= isGerman ? "Telefon" : "Telephone" %></strong></p>
+                          <p class="pb-2"><%- user.telephone ? ("<a href='tel:+" + user.telephone + "'>+" + user.telephone + "</a>") : "" %></a></p>
+                          <div id="contactSaved" class="row" style="display: none">
+                            <div class="col">
+                              <small style="color: #008000; font-size: 100%">
+                                <%= isGerman ? "Vielen Dank für Ihre Kontaktaufnahme" : "Thank you for getting in touch" %>.<br />
+                                <%= isGerman ? "Ich werde mich so bald wie möglich bei Ihnen melden" : "I will contact you as soon as possible" %>.
+                              </small>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container text-center">
+        <a href="<%= user.linkedIn %>" target="_blank" class="btn btn-default btn-round btn-lg btn-icon"><i class="fab fa-linkedin-in fa-2x" aria-hidden="true"></i></a>
+        <a href="<%= user.xing %>" target="_blank" class="btn btn-default btn-round btn-lg btn-icon"><i class="fab fa-xing fa-2x" aria-hidden="true"></i></a>
+        <a href="<%= user.gitHub %>" target="_blank" class="btn btn-default btn-round btn-lg btn-icon"><i class="fab fa-github fa-2x" aria-hidden="true"></i></a>
+        <a href="mailto:<%= user.email %>" class="btn btn-default btn-round btn-lg btn-icon"><i class="fab fa-yahoo fa-2x" aria-hidden="true"></i></a>
+      </div>
+      <div class="h4 title text-center"><%= user.firstName %> <%= user.lastName %></div>
+    </footer>
+  </body>
+  <script type="module" src="../handlers/about.js"></script>
+</html>

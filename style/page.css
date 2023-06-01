@@ -1,0 +1,58 @@
+.navigation, .list-group-item {
+  padding: 0px;
+}
+#toggleSidebar {
+  margin-left: 5px;
+}
+.dropdown-menu {
+  left: -116px !important;
+  margin-top: 8px !important;
+}
+#pageContent {
+  overflow-x: hidden;
+}
+#sidebar {
+  min-height: 100vh;
+  margin-left: -15rem;
+  transition: margin .25s ease-out;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+
+}
+#sidebar .heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+#sidebar .list {
+  width: 15rem;
+  padding-left: 0px;
+}
+#pageStyle {
+  min-width: 100vw;
+}
+#pageContent.toggled #sidebarDiv {
+  margin-left: 0px;
+}
+.list-group-item {
+  display: inline-block;
+  cursor: pointer;
+}
+.link {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #000;
+  text-decoration: none;
+}
+@media (min-width: 768px) {
+  #sidebar {
+    margin-left: 0px;
+  }
+  #pageStyle {
+    min-width: 0px;
+    width: 100%;
+  }
+  #pageContent.toggled #sidebar {
+    margin-left: -15rem;
+  }
+}

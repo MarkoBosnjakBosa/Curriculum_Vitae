@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Profile</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Marko Bošnjak">
+    <meta name="description" content="Curriculum Vitae">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="<%= baseUrl %>/images/cvFavicon.ico" rel="icon">
+    <link href="/stylesheets/fontawesome/css/all.css" rel="stylesheet" type="text/css">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../style/page.css" rel="stylesheet" type="text/css">
+    <link href="../style/style.css" rel="stylesheet" type="text/css">
+    <script src="/popper/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/jquery/jquery.js"></script>
+    <script type="module" src="../handlers/profile.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="d-flex" id="pageContent">
+        <%- include("components/sidebar.html", { baseUrl: `${baseUrl}` }); %>
+        <div id="pageStyle">
+          <%- include("components/navigation.html", { baseUrl: `${baseUrl}` }); %>
+          <h1 class="center">Profile</h1>
+          <div class="mb-3 profile position">
+            <div class="row">
+              <div class="col-8">
+                <form id="profileForm" autocomplete="off" novalidate>
+                  <div class="mb-3 row">
+                    <label for="username" class="col-3 col-form-label">Username:</label>
+                    <div class="col-9">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        <input type="text" id="username" class="form-control" value="<%= user.username %>" disabled />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label for="firstName" class="col-3 col-form-label">First name:</label>
+                    <div class="col-9">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
+                        <input type="text" id="firstName" class="form-control" value="<%= user.firstName %>" />
+                      </div>
+                      <small id="firstNameError" class="form-text error">Please provide a valid first name!</small>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label for="lastName" class="col-3 col-form-label">Last name:</label>
+                    <div class="col-9">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-pen"></i></span>
+                        <input type="text" id="lastName" class="form-control" value="<%= user.lastName %>" />
+                      </div>
+                      <small id="lastNameError" class="form-text error">Please provide a valid last name!</small>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label for="email" class="col-3 col-form-label">Email:</label>
+                    <div class="col-9">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                        <input type="text" id="email" class="form-control" value="<%= user.email %>" />
+                      </div>
+                      <small id="emailError" class="form-text error">Please provide a valid email!</small>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label for="telephone" class="col-3 col-form-label">Telephone:</label>
+                    <div class="col-9">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-mobile-alt"></i></span>
+                        <span class="input-group-text countryCodePrefix">+</span>
+                        <input type="text" id="telephone" class="form-control" value="<%= user.telephone %>" />
+                      </div>
+                      <small id="telephoneError" class="form-text error">Please provide a valid telephone number!</small>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label for="birthday" class="col-3 col-form-label">Birthday:</label>
+                    <div class="col-9">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
+                        <input type="text" id="birthday" class="form-control" placeholder="dd/MM/yyyy" value="<%= user.birthday %>" />
+                      </div>
+                      <small id="birthdayError" class="form-text error">Please provide a valid birthday!</small>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label for="birthday_de" class="col-3 col-form-label">Birthday DE:</label>
+                    <div class="col-9">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
+                        <input type="text" id="birthday_de" class="form-control" placeholder="dd.MM.yyyy" value="<%= user.birthday_de %>" />
+                      </div>
+                      <small id="birthday_deError" class="form-text error">Please provide a valid birthday in German!</small>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label for="address" class="col-3 col-form-label">Address:</label>
+                    <div class="col-9">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-location-arrow"></i></span>
+                        <input type="text" id="address" class="form-control" value="<%= user.address %>" />
+                      </div>
+                      <small id="addressError" class="form-text error">Please provide a valid address!</small>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label for="address_de" class="col-3 col-form-label">Address DE:</label>
+                    <div class="col-9">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-location-arrow"></i></span>
+                        <input type="text" id="address_de" class="form-control" value="<%= user.address_de %>" />
+                      </div>
+                      <small id="address_deError" class="form-text error">Please provide a valid address in German!</small>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label for="languages" class="col-3 col-form-label">Languages:</label>
+                    <div class="col-9">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-globe"></i></span>
+                        <input type="text" id="languages" class="form-control" value="<%= user.languages %>" />
+                      </div>
+                      <small id="languagesError" class="form-text error">Please provide valid languages!</small>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label for="languages_de" class="col-3 col-form-label">Languages DE:</label>
+                    <div class="col-9">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-globe"></i></span>
+                        <input type="text" id="languages_de" class="form-control" value="<%= user.languages_de %>" />
+                      </div>
+                      <small id="languages_deError" class="form-text error">Please provide valid languages in German!</small>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label for="profession" class="col-3 col-form-label">Profession:</label>
+                    <div class="col-9">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-laptop-code"></i></span>
+                        <input type="text" id="profession" class="form-control" value="<%= user.profession %>" />
+                      </div>
+                      <small id="professionError" class="form-text error">Please provide valid profession!</small>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label for="profession_de" class="col-3 col-form-label">Profession DE:</label>
+                    <div class="col-9">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-laptop-code"></i></span>
+                        <input type="text" id="profession_de" class="form-control" value="<%= user.profession_de %>" />
+                      </div>
+                      <small id="profession_deError" class="form-text error">Please provide valid profession in German!</small>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label for="linkedIn" class="col-3 col-form-label">LinkedIn:</label>
+                    <div class="col-9">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fab fa-linkedin-in"></i></span>
+                        <input type="text" id="linkedIn" class="form-control" placeholder="https://" value="<%= user.linkedIn %>" />
+                      </div>
+                      <small id="linkedInError" class="form-text error">Please provide a valid LinkedIn account!</small>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label for="xing" class="col-3 col-form-label">Xing:</label>
+                    <div class="col-9">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fab fa-xing"></i></span>
+                        <input type="text" id="xing" class="form-control" placeholder="https://" value="<%= user.xing %>" />
+                      </div>
+                      <small id="xingError" class="form-text error">Please provide a valid Xing account!</small>
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label for="gitHub" class="col-3 col-form-label">GitHub:</label>
+                    <div class="col-9">
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fab fa-github"></i></span>
+                        <input type="text" id="gitHub" class="form-control" placeholder="https://" value="<%= user.gitHub %>" />
+                      </div>
+                      <small id="gitHubError" class="form-text error">Please provide a valid GitHub account!</small>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <button type="submit" class="btn btn-primary action">Save</button>
+                  </div>
+                </form>
+              </div>
+              <div class="col-4 avatar">
+                <img src="data:<%= user.avatar.mimeType %>;base64,<%= (new Buffer.from(user.avatar.buffer)).toString('base64') %>" alt="<%= user.avatar.name %>" class="img-fluid w-100 image" />
+                <form autocomplete="off" novalidate>
+                  <label for="avatar" class="upload center radius pointer"><i class="fas fa-cloud-upload-alt"></i> Upload</label>
+                  <input type="file" accept="image/*" id="avatar" class="form-control" />
+                </form>
+              </div>
+            </div>
+          </div>
+          <%- include("components/notification.html"); %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

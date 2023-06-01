@@ -1,0 +1,18 @@
+<div class="position-fixed bottom-0 end-0 p-3">
+  <div class="toast" role="alert">
+    <div class="toast-header">
+      <b class="me-auto toast-title"></b>
+      <button type="button" class="btn-close"></button>
+    </div>
+    <div class="toast-body"></div>
+  </div>
+</div>
+
+<script>
+  $(document).on("click", ".toast .btn-close", () => {
+    $(".toast").hide();
+    $(".toast-title").text("");
+    $(".toast-body").removeClass("error").removeClass("success");
+    $(".toast-body").text("");
+  });
+</script>

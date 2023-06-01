@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <p>Hey <b><%= firstName %></b>,</p>
+    <p>you have a new inquiry.</p>
+    <p>
+      Name: <b><%= contact.name %></b><br />
+      Email: <b><%= contact.email %></b><br />
+      Subject: <b><%= contact.subject %></b><br />
+      Language: <b><%= contact.isGerman ? "German" : "English" %></b><br />
+      Time: <b><%= new Date(contact.date).toLocaleString("de-DE", { dateStyle: "medium", timeStyle: "short" }) %></b><br />
+      Message: <b><%= contact.message %></b>
+    </p>
+  </body>
+</html>
