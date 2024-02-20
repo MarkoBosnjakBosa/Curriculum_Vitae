@@ -1,4 +1,4 @@
-import { validText } from "../../utilities/validations";
+import { validText, validArray } from "../../utilities/validations";
 
 export const convertString = (string, capitalize) => {
   if (validText(string)) return `${capitalize ? string.charAt(0).toUpperCase() : string.charAt(0).toLowerCase()}${string.slice(1)}`;
@@ -20,7 +20,7 @@ export const loadScript = (url) => {
 
 export const displayReCaptcha = (type) => {
   const reCaptchas = document.getElementsByClassName("grecaptcha-badge");
-  if (reCaptchas && reCaptchas.length) {
+  if (validArray(reCaptchas)) {
     if (type) reCaptchas[0].style.visibility = "visible";
     else reCaptchas[0].style.visibility = "hidden";
   }

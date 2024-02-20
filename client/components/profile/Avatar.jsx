@@ -1,5 +1,5 @@
 import useHttp from "../../hooks/use-http";
-import { validMimeType } from "../../../utilities/validations";
+import { validMimeType, validArray } from "../../../utilities/validations";
 import NotificationLayout from "../layouts/NotificationLayout";
 import defaultStyle from "../../App.module.css";
 import style from "./Profile.module.css";
@@ -13,7 +13,7 @@ const Avatar = (props) => {
 
   const editAvatar = (event) => {
     const files = event.target.files;
-    if (files && files.length) {
+    if (validArray(files)) {
       const file = files[0];
       const mimeType = file.type;
       if (validMimeType(mimeType)) {

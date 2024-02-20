@@ -3,7 +3,7 @@ import PortfolioItem from "../models/portfolioItem.js";
 import ResumeItem from "../models/resumeItem.js";
 import Reference from "../models/reference.js";
 import Contact from "../models/contact.js";
-import { validEmail, validPassword, validName, validTelephone, validDate, validText, validLink, validMimeType, validToken, validType, validUser, validItem, validReCaptcha, validObject } from "../../utilities/validations.js";
+import { validEmail, validPassword, validName, validTelephone, validDate, validText, validLink, validMimeType, validToken, validType, validUser, validItem, validReCaptcha, validObject, validArray } from "../../utilities/validations.js";
 import constants from "../../utilities/constants.js";
 
 const validateLogin = async (request, response, next) => {
@@ -13,7 +13,7 @@ const validateLogin = async (request, response, next) => {
   if (!isUserValid) errors = [...errors, "username"];
   const password = request.body.password;
   if (!validPassword(password)) errors = [...errors, "password"];
-  if (!errors.length) return next();
+  if (!validArray(errors)) return next();
   else return response.status(400).json({ errors }).end();
 };
 
@@ -53,7 +53,7 @@ const validateProfile = async (request, response, next) => {
       if (!validLink(xing)) errors = [...errors, "xing"];
       const gitHub = request.body.gitHub;
       if (!validLink(gitHub)) errors = [...errors, "gitHub"];
-      if (!errors.length) return next();
+      if (!validArray(errors)) return next();
       else return response.status(400).json({ errors }).end();
     } else return next();
   }
@@ -139,7 +139,7 @@ const validatePortfolioItem = async (request, response, next) => {
       const logo = request.body.logo;
       if (!validObject(logo)) errors = [...errors, "logo"];
       else if (!validText(logo.name) || !validMimeType(logo.mimeType) || !validText(logo.data)) errors = [...errors, "logo"];
-      if (!errors.length) return next();
+      if (!validArray(errors)) return next();
       else return response.status(400).json({ errors }).end();
     } else return next();
   }
@@ -157,7 +157,7 @@ const validateNewPortfolioItem = (request, response, next) => {
   const logo = request.body.logo;
   if (!validObject(logo)) errors = [...errors, "logo"];
   else if (!validText(logo.name) || !validMimeType(logo.mimeType) || !validText(logo.data)) errors = [...errors, "logo"];
-  if (!errors.length) return next();
+  if (!validArray(errors)) return next();
   else return response.status(400).json({ errors }).end();
 };
 
@@ -181,7 +181,7 @@ const validateResumeItem = async (request, response, next) => {
       if (!validText(duration_de)) errors = [...errors, "duration DE"];
       const type = request.body.type;
       if (!validType(type, constants.RESUME_ITEM)) errors = [...errors, "type"];
-      if (!errors.length) return next();
+      if (!validArray(errors)) return next();
       else return response.status(400).json({ errors }).end();
     } else return next();
   }
@@ -204,7 +204,7 @@ const validateNewResumeItem = (request, response, next) => {
   if (!validText(duration_de)) errors = [...errors, "duration DE"];
   const type = request.body.type;
   if (!validType(type, constants.RESUME_ITEM)) errors = [...errors, "type"];
-  if (!errors.length) return next();
+  if (!validArray(errors)) return next();
   else return response.status(400).json({ errors }).end();
 };
 
@@ -227,7 +227,7 @@ const validateReference = async (request, response, next) => {
       const logo = request.body.logo;
       if (!validObject(logo)) errors = [...errors, "logo"];
       else if (!validText(logo.name) || !validMimeType(logo.mimeType) || !validText(logo.data)) errors = [...errors, "logo"];
-      if (!errors.length) return next();
+      if (!validArray(errors)) return next();
       else return response.status(400).json({ errors }).end();
     } else return next();
   }
@@ -249,7 +249,7 @@ const validateNewReference = (request, response, next) => {
   const logo = request.body.logo;
   if (!validObject(logo)) errors = [...errors, "logo"];
   else if (!validText(logo.name) || !validMimeType(logo.mimeType) || !validText(logo.data)) errors = [...errors, "logo"];
-  if (!errors.length) return next();
+  if (!validArray(errors)) return next();
   else return response.status(400).json({ errors }).end();
 };
 
@@ -272,7 +272,7 @@ const validateNewContact = (request, response, next) => {
   if (!validText(message)) errors = [...errors, "message"];
   const reCaptchaToken = request.body.reCaptchaToken;
   if (!validText(reCaptchaToken)) errors = [...errors, "ReCaptcha"];
-  if (!errors.length) {
+  if (!validArray(errors)) {
     const reCaptchaVerificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_v3_SECRET_KEY}&response=${reCaptchaToken}&remoteip=${request.connection.remoteAddress}`;
     if (validReCaptcha(reCaptchaVerificationUrl)) return next();
     else return response.status(400).json({ errors: "ReCaptcha" }).end();

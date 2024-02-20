@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { validArray } from "../../../utilities/validations";
 import constants from "../../../utilities/constants";
 import Contact from "./Contact";
 import SearchLayout from "../layouts/SearchLayout";
@@ -13,7 +14,7 @@ const ContactsTable = (props) => {
   return (
     <div className={`${defaultStyle.auto} ${defaultStyle.bigContent}`}>
       <SearchLayout onSearch={setSearch} />
-      {contacts.length ? (
+      {validArray(contacts) ? (
         <TableLayout labels={constants.CONTACTS_LABELS} usePaging>
           {contacts.filter((contact) => contact.name.toLowerCase().includes(search) || contact.email.toLowerCase().includes(search) || contact.subject.toLowerCase().includes(search) || contact.message.toLowerCase().includes(search)).map((contact, index) => (
             <Contact key={`${contact._id}_${new Date().getTime()}`} contact={contact} user={user} index={++index} onCompleteEdit={onCompleteEdit} onCompleteDeletion={onCompleteDeletion} />

@@ -1,4 +1,5 @@
 import { convertString } from "../../utilities/scripts";
+import { validArray } from "../../../utilities/validations";
 import constants from "../../../utilities/constants";
 import PortfolioItem from "./PortfolioItem";
 import TableLayout from "../layouts/TableLayout";
@@ -11,7 +12,7 @@ const PortfolioTable = (props) => {
   return (
     <>
       <h2 className={defaultStyle.center}>{`${convertString(type, true)} portfolio`}</h2>
-      {portfolio.length ? (
+      {validArray(portfolio) ? (
         <TableLayout labels={constants.PORTFOLIO_LABELS} customization={`${defaultStyle.auto} ${defaultStyle.bigContent}`}>
           {portfolio.map((portfolioItem, index) => (
             <PortfolioItem key={`${portfolioItem._id}_${new Date().getTime()}`} portfolioItem={portfolioItem} index={++index} onCompleteEdit={onCompleteEdit} onCompleteDeletion={onCompleteDeletion} />

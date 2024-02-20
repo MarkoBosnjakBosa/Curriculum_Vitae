@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { validText } from "../../../utilities/validations";
+import { validText, validArray } from "../../../utilities/validations";
 import constants from "../../../utilities/constants";
 import NewSkill from "./NewSkill";
 import Skill from "./Skill";
@@ -33,7 +33,7 @@ const Skills = (props) => {
     <>
       <h1 className={defaultStyle.center}>Skills</h1>
       <NewSkill onCompleteCreation={completeCreation} />
-      {skills.length ? (
+      {validArray(skills) ? (
         <TableLayout labels={constants.SKILLS_LABELS} customization={`${defaultStyle.auto} ${defaultStyle.mediumContent} ${defaultStyle.marginBottom}`}>
           {skills.map((skill, index) => (
             <Skill key={`${skill._id}_${new Date().getTime()}`} skill={skill} index={++index} onCompleteEdit={completeEdit} onCompleteDeletion={completeDeletion} />

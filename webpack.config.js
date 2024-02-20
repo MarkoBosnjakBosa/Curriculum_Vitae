@@ -10,7 +10,7 @@ const properties = {
   output: { path: path.resolve("./bundle"), filename: "bundle.js" },
   plugins: [
     new webpack.ProvidePlugin({ React: "react" }),
-    new webpack.DefinePlugin({ "process.env": (mode === "development") ? { "RECAPTCHA_v3_SITE_KEY": JSON.stringify(dotenv.config().parsed.RECAPTCHA_v3_SITE_KEY) } : "" }),
+    new webpack.DefinePlugin({ "process.env": { "RECAPTCHA_v3_SITE_KEY": JSON.stringify((mode === "production") ? process.env.RECAPTCHA_v3_SITE_KEY : dotenv.config().parsed.RECAPTCHA_v3_SITE_KEY) } }),
     new HtmlWebpackPlugin({ template: path.resolve("./client/index.html"), favicon: path.resolve("./utilities/assets/cvFavicon.ico") })
   ],
   module: {

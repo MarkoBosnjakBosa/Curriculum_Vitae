@@ -1,4 +1,4 @@
-import { validMimeType, validObject } from "../../../utilities/validations";
+import { validMimeType, validObject, validArray } from "../../../utilities/validations";
 import defaultStyle from "../../App.module.css";
 import style from "./Layouts.module.css";
 
@@ -7,7 +7,7 @@ const LogoLayout = (props) => {
 
   const uploadLogo = (event) => {
     const files = event.target.files;
-    if (files && files.length) {
+    if (validArray(files)) {
       const file = files[0];
       const mimeType = file.type;
       if (validMimeType(mimeType)) {
