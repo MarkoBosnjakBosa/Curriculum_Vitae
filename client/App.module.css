@@ -1,0 +1,117 @@
+.auto {
+  margin: auto !important;
+}
+.bigContent {
+  max-width: 1400px;
+}
+.mediumContent {
+  max-width: 900px;
+}
+.smallContent {
+  max-width: 400px;
+}
+.noLink {
+  color: inherit;
+  text-decoration: inherit;
+}
+.flag {
+  height: 15px;
+  width: 15px;
+}
+.actions {
+  min-width: 60px;
+}
+.center {
+  text-align: center;
+}
+.floatRight {
+  float: right;
+}
+.alignRight {
+  text-align: right;
+}
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.corner {
+  top: 50%;
+  left: 50%;
+}
+.width {
+  width: 200px !important;
+}
+.fullHeight {
+  height: 100%;
+}
+.fullWidth {
+  width: 100%;
+}
+.pointer {
+  cursor: pointer;
+}
+.noPointer {
+  cursor: default;
+}
+.borderRadius {
+  border-radius: 10px;
+}
+.circle {
+  border-radius: 50%;
+}
+.noPadding {
+  padding: 0px !important;
+}
+.iconMargin {
+  margin-left: 5px;
+}
+.sectionMarginTop {
+  margin-top: 50px !important;
+}
+.marginTop {
+  margin-top: 20px !important;
+}
+.marginBottom {
+  margin-bottom: 20px !important;
+}
+.display {
+  display: inline-block;
+}
+.none {
+  display: none;
+}
+.white {
+  color: #fff;
+}
+.green {
+  background-color: #378C3F;
+}
+.bold {
+  font-weight: 700;
+}
+.text {
+  font-size: 14px;
+}
+.fontSize {
+  font-size: 25px;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.label {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 6px 12px;
+}
+.button {
+  width: 100px;
+  margin: 5px;
+  border: none;
+  border-radius: 3px;
+  padding: 11px 22px;
+}
+.button:hover:enabled {
+  background-color: #40a249;
+}

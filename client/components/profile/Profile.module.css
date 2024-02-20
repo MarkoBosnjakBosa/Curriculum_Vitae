@@ -1,0 +1,10 @@
+.avatar {
+  height: 200px;
+}
+.content {
+  max-width: 600px;
+}
+.chip {
+  height: 50px !important;
+  font-size: 32px !important;
+}

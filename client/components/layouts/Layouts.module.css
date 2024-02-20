@@ -1,0 +1,53 @@
+.field {
+  margin: 0px 0px 10px 0px !important;
+}
+.text {
+  margin-left: 0px !important;
+}
+.wrapper {
+  padding: 0px 15px 0px 15px;
+}
+.section {
+  max-width: 1200px;
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
+}
+.search {
+  width: 250px;
+}
+.logo {
+  height: 220px;
+  width: 220px;
+  border-radius: 5%;
+  margin-bottom: 5px;
+}
+.action {
+  height: 57.5px;
+  width: 57.5px;
+  border-radius: 30px;
+  background-color: #888;
+  margin-right: 8px;
+}
+.icon {
+  transform: translate(-12px, -12px);
+  line-height: 25px;
+  width: 25px;
+  font-size: 21px;
+}
+.first {
+  padding: 20px 15px 30px 15px !important;
+}
+.second {
+  padding: 15px 0px 15px 30px !important;
+}
+.title {
+  margin-bottom: 25px;
+}
+.reference {
+  padding: 10px 0px 5px 10px;
+}
+.image {
+  height: 100px;
+}
+.marginTop {
+  margin-top: 30px !important;
+}

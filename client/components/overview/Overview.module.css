@@ -1,0 +1,13 @@
+.information {
+  background-color: #f2f2f2;
+}
+.row {
+  margin-bottom: 5px !important;
+  overflow-wrap: break-word;
+}
+.padding {
+  padding: 18px;
+}
+.image {
+  height: 400px;
+}
