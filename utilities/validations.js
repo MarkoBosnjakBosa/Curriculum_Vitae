@@ -75,3 +75,5 @@ export const validReCaptcha = async (reCaptchaVerificationUrl) => {
 export const validObjectId = (objectId) => objectId && /^[a-fA-F0-9]{24}$/.test(objectId);
 
 export const validObject = (object) => object && Object.keys(object).length;
+
+export const validArray = (array) => array && (array.constructor === Array) && array.length;
