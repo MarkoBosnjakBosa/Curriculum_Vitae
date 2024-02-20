@@ -1,4 +1,9 @@
 import User from "../server/models/user.js";
+import Skill from "../server/models/skill.js";
+import PortfolioItem from "../server/models/portfolioItem.js";
+import ResumeItem from "../server/models/resumeItem.js";
+import Reference from "../server/models/reference.js";
+import Contact from "../server/models/contact.js";
 import constants from "./constants.js";
 
 export const validUsername = (username) => username && /^[a-z0-9_.-]*$/.test(username);
@@ -74,6 +79,6 @@ export const validReCaptcha = async (reCaptchaVerificationUrl) => {
 
 export const validObjectId = (objectId) => objectId && /^[a-fA-F0-9]{24}$/.test(objectId);
 
-export const validObject = (object) => object && Object.keys(object).length;
+export const validObject = (object) => object && ((object.constructor === Object) || (object.constructor === User) || (object.constructor === Skill) || (object.constructor === PortfolioItem) || (object.constructor === ResumeItem) || (object.constructor === Reference) || (object.constructor === Contact)) && Object.keys(object).length;
 
-export const validArray = (array) => array && (array.constructor === Array) && array.length;
+export const validArray = (array) => array && ((array.constructor === Array) || (array.constructor === FileList)) && array.length;
