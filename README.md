@@ -1,4 +1,4 @@
-Curriculum Vitae  
+Curriculum Vitae
 
 Features:  
 REST API by using Express.js  
