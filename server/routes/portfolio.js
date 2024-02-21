@@ -16,18 +16,17 @@ export const getPortfolioItem = async (request, response) => {
 };
 
 export const createPortfolioItem = async (request, response) => {
-  const { title, link, type, logo } = request.body;
-  const newPortfolioItem = new PortfolioItem({ title, link, type, logo });
+  const { body } = request;
+  const newPortfolioItem = new PortfolioItem(body);
   const portfolioItem = await newPortfolioItem.save();
   return response.status(200).json(portfolioItem).end();
 };
 
 export const editPortfolioItem = async (request, response) => {
   const { portfolioItemId } = request.params;
-  const { title, link, type, logo } = request.body;
-  const update = { title, link, type, logo };
+  const { body } = request;
   const options = { new: true };
-  const portfolioItem = await PortfolioItem.findByIdAndUpdate(portfolioItemId, update, options);
+  const portfolioItem = await PortfolioItem.findByIdAndUpdate(portfolioItemId, body, options);
   return response.status(200).json(portfolioItem).end();
 };
 

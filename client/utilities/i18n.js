@@ -35,7 +35,7 @@ const internationalization = {
   "cv.paragraphs.second.part": { en: "I enjoy turning complex problems into well-designed and user-friendly applications, while tending to keep my code clean and organized. I have a lot of experience in working with Atlassian products (Jira, Confluence, JSM, Bitbucket). I like building web systems in my free time, that you can see on my ", de: "Ich verwandle gerne komplexe Probleme in gut gestaltete und benutzerfreundliche Anwendungen und tendiere dazu, meinen Code sauber und organisiert zu halten. Ich habe viel Erfahrung in der Arbeit mit Atlassian Produkten (Jira, Confluence, JSM, Bitbucket). In meiner Freizeit baue ich gerne Websysteme, die Sie auf meinem " },
   "cv.paragraphs.third.part": { en: " account. I have a Master's degree in Computer Science.", de: "-Konto sehen können. Ich habe einen Masterabschluss in Computer Science." },
   "cv.paragraphs.fourth.part": { en: "Thank you for getting in touch.", de: "Vielen Dank für Ihre Kontaktaufnahme." },
-  "cv.paragraphs.fifth.part": { en: "I will contact you as soon as possible.", de: "Ich werde mich so bald wie möglich bei Ihnen melden." },
+  "cv.paragraphs.fifth.part": { en: "I received your message and will get back to you as soon as possible.", de: "Ich habe Ihre Nachricht erhalten und werde mich so schnell wie möglich bei Ihnen melden." },
   "cv.texts.at": { en: "at", de: "bei" },
   "cv.texts.loading": { en: "Loading...", de: "Laden..." },
   "cv.texts.page.not.found": { en: "Page not found!", de: "Seite nicht gefunden!" },

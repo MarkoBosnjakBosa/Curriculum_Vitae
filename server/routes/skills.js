@@ -12,18 +12,17 @@ export const getSkill = async (request, response) => {
 };
 
 export const createSkill = async (request, response) => {
-  const { title } = request.body;
-  const newSkill = new Skill({ title });
+  const { body } = request;
+  const newSkill = new Skill(body);
   const skill = await newSkill.save();
   return response.status(200).json(skill).end();
 };
 
 export const editSkill = async (request, response) => {
   const { skillId } = request.params;
-  const { title } = request.body;
-  const update = { title };
+  const { body } = request;
   const options = { new: true };
-  const skill = await Skill.findByIdAndUpdate(skillId, update, options);
+  const skill = await Skill.findByIdAndUpdate(skillId, body, options);
   return response.status(200).json(skill).end();
 };
 

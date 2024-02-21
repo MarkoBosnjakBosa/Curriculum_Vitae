@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import useHttp from "../../hooks/use-http";
 import useInput from "../../hooks/use-input";
 import { login } from "../../utilities/authentication";
-import { validToken } from "../../../utilities/validations";
+import { validText, validToken } from "../../../utilities/validations";
 import TextLayout from "../layouts/TextLayout";
 import MessageLayout from "../layouts/MessageLayout";
 import defaultStyle from "../../App.module.css";
@@ -40,7 +40,7 @@ const Authentication = (props) => {
   return (
     <form className={`${defaultStyle.auto} ${defaultStyle.smallContent} ${defaultStyle.marginBottom}`} onSubmit={authenticate} autoComplete="off" noValidate>
       <h1 className={defaultStyle.center}>Authentication</h1>
-      {error && (
+      {validText(error) && (
         <MessageLayout message={error} />
       )}
       <TextLayout type="text" value={token} label="Token" error={tokenError} onChange={changeToken} onBlur={blurToken} required><LockClock /></TextLayout>

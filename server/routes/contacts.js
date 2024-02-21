@@ -14,11 +14,10 @@ export const getContacts = async (request, response) => {
 };
 
 export const saveContact = async (request, response) => {
-	const { name, email, subject, message, isGerman } = request.body;
-  const isAnswered = false;
-	const date = new Date().getTime();
-	const newContact = new Contact({ name, email, subject, message, isGerman, isAnswered, date });
-	const contact = await newContact.save();
+  let { body } = request;
+  body = { ...body, isAnswered: false, date: new Date().getTime() };
+  const newContact = new Contact(body);
+  const contact = await newContact.save();
   const user = await User.findOne();
   if (validObject(user)) {
     const { email, firstName, lastName } = user;

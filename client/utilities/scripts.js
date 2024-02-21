@@ -21,7 +21,8 @@ export const loadScript = (url) => {
 export const displayReCaptcha = (type) => {
   const reCaptchas = document.getElementsByClassName("grecaptcha-badge");
   if (validArray(reCaptchas)) {
-    if (type) reCaptchas[0].style.visibility = "visible";
-    else reCaptchas[0].style.visibility = "hidden";
+    const reCaptcha = reCaptchas[0];
+    if (type) reCaptcha.style.visibility = "visible";
+    else reCaptcha.style.visibility = "hidden";
   }
 };

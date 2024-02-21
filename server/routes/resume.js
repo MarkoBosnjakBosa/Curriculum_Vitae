@@ -15,18 +15,17 @@ export const getResumeItem = async (request, response) => {
 };
 
 export const createResumeItem = async (request, response) => {
-  const { title, title_de, workPlace, workPlace_de, duration, duration_de, description, description_de, type } = request.body;
-  const newResumeItem = new ResumeItem({ title, title_de, workPlace, workPlace_de, duration, duration_de, description, description_de, type });
+  const { body } = request;
+  const newResumeItem = new ResumeItem(body);
   const resumeItem = await newResumeItem.save();
   return response.status(200).json(resumeItem).end();
 };
 
 export const editResumeItem = async (request, response) => {
   const { resumeItemId } = request.params;
-  const { title, title_de, workPlace, workPlace_de, duration, duration_de, description, description_de, type } = request.body;
-  const update = { title, title_de, workPlace, workPlace_de, duration, duration_de, description, description_de, type };
+  const { body } = request;
   const options = { new: true };
-  const resumeItem = await ResumeItem.findByIdAndUpdate(resumeItemId, update, options);
+  const resumeItem = await ResumeItem.findByIdAndUpdate(resumeItemId, body, options);
   return response.status(200).json(resumeItem).end();
 };
 

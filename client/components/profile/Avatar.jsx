@@ -42,7 +42,7 @@ const Avatar = (props) => {
       )}
       <img src={avatar.data} alt={avatar.name} className={`${defaultStyle.marginBottom} ${defaultStyle.width} ${defaultStyle.circle} ${style.avatar}`} />
       <div className={defaultStyle.marginBottom}>
-        <label htmlFor="avatar" className={`${defaultStyle.display} ${defaultStyle.label} ${defaultStyle.width} ${defaultStyle.center} ${isLoading ? defaultStyle.noPointer : defaultStyle.pointer}`}><i className={isLoading ? "fa-solid fa-spinner" : "fas fa-cloud-upload-alt"}></i> <strong>{isLoading ? "Loading..." : "Upload"}</strong></label>
+        <label htmlFor="avatar" className={`${defaultStyle.display} ${defaultStyle.label} ${defaultStyle.width} ${defaultStyle.center} ${isLoading ? defaultStyle.noPointer : defaultStyle.pointer}`}><i className={isLoading ? "fa-solid fa-spinner" : "fas fa-cloud-upload-alt"}></i> <strong>{isLoading ? "Loading..." : "Avatar *"}</strong></label>
         <input type="file" accept="image/*" id="avatar" className={defaultStyle.none} onChange={editAvatar} disabled={isLoading} />
       </div>
     </>

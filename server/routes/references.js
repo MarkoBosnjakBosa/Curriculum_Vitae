@@ -15,18 +15,17 @@ export const getReference = async (request, response) => {
 };
 
 export const createReference = async (request, response) => {
-  const { title, title_de, duration, duration_de, type, logo } = request.body;
-  const newReference = new Reference({ title, title_de, duration, duration_de, type, logo });
+  const { body } = request;
+  const newReference = new Reference(body);
   const reference = await newReference.save();
   return response.status(200).json(reference).end();
 };
 
 export const editReference = async (request, response) => {
   const { referenceId } = request.params;
-  const { title, title_de, duration, duration_de, type, logo } = request.body;
-  const update = { title, title_de, duration, duration_de, type, logo };
+  const { body } = request;
   const options = { new: true };
-  const reference = await Reference.findByIdAndUpdate(referenceId, update, options);
+  const reference = await Reference.findByIdAndUpdate(referenceId, body, options);
   return response.status(200).json(reference).end();
 };
 

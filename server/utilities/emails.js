@@ -9,13 +9,13 @@ export const sendEmails = (email, firstName, lastName, contact) => {
 };
 
 const sendAdministratorEmail = async (email, firstName, contact) => {
-  const compiledHtml = ejs.compile(fs.readFileSync(`${path.resolve()}/server/templates/administrator.html`, { encoding: "UTF-8" }));
+  const compiledHtml = ejs.compile(fs.readFileSync(path.resolve("./server/templates/administrator.html"), { encoding: "UTF-8" }));
   const html = compiledHtml({ firstName, contact });
   await sendEmail(email, "New inquiry", html);
 };
 
 const sendContactEmail = async (firstName, lastName, contact) => {
-  const compiledHtml = ejs.compile(fs.readFileSync(`${path.resolve()}/server/templates/contact.html`, { encoding: "UTF-8" }));
+  const compiledHtml = ejs.compile(fs.readFileSync(path.resolve("./server/templates/contact.html"), { encoding: "UTF-8" }));
   const html = compiledHtml({ firstName, lastName, contact });
   await sendEmail(contact.email, `${firstName} ${lastName} - ${contact.isGerman ? "Nachricht erhalten" : "Message received"}`, html);
 };

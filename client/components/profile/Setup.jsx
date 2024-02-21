@@ -66,7 +66,7 @@ const Setup = (props) => {
         {isSaved && (
           <MessageLayout message="The setup has been successfully saved!" onClose={() => setIsSaved(false)} />
         )}
-        {(secretError || authenticationError) && (
+        {(validText(secretError) || validText(authenticationError)) && (
           <MessageLayout message={secretError || authenticationError} />
         )}
         <div className={defaultStyle.center}>

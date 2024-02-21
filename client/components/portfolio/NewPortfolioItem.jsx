@@ -64,7 +64,7 @@ const NewPortfolioItem = (props) => {
             <TextLayout type="text" value={title} label="Title" error={titleError} onChange={changeTitle} onBlur={blurTitle} required><Subtitles /></TextLayout>
             <TextLayout type="text" value={link} label="Link" error={linkError} onChange={changeLink} onBlur={blurLink} required><Link /></TextLayout>
             <SelectLayout value={type} label="Type" error={typeError} options={constants.PORTFOLIO_OPTIONS} onChange={changeType} onBlur={blurType} required />
-            <LogoLayout logo={logo} onUpload={setLogo} />
+            <LogoLayout logo={logo} required onUpload={setLogo} />
           </form>
         </ModalLayout>
       )}

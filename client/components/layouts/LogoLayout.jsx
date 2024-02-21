@@ -3,7 +3,7 @@ import defaultStyle from "../../App.module.css";
 import style from "./Layouts.module.css";
 
 const LogoLayout = (props) => {
-  const { logo, onUpload } = props;
+  const { logo, required, onUpload } = props;
 
   const uploadLogo = (event) => {
     const files = event.target.files;
@@ -26,7 +26,7 @@ const LogoLayout = (props) => {
       {validObject(logo) ? (
         <div><img src={logo.data} alt={logo.name} className={style.logo} /></div>
       ) : ("")}
-      <label htmlFor="logo" className={`${defaultStyle.label} ${defaultStyle.display} ${defaultStyle.pointer} ${defaultStyle.width}`}><i className="fas fa-cloud-upload-alt"></i> <strong>Logo</strong></label>
+      <label htmlFor="logo" className={`${defaultStyle.label} ${defaultStyle.display} ${defaultStyle.pointer} ${defaultStyle.width}`}><i className="fas fa-cloud-upload-alt"></i> <strong>Logo {required && ("*")}</strong></label>
       <input type="file" accept="image/*" id="logo" className={defaultStyle.none} onChange={uploadLogo} />
     </div>
   );

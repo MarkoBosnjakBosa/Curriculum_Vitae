@@ -90,7 +90,7 @@ const Reference = (props) => {
                 <TextLayout type="text" value={duration} label="Duration" error={durationError} onChange={changeDuration} onBlur={blurDuration} required><CalendarMonth /></TextLayout>
                 <TextLayout type="text" value={duration_de} label="Duration DE" error={duration_deError} onChange={changeDuration_de} onBlur={blurDuration_de} required><CalendarMonth /></TextLayout>
                 <SelectLayout value={type} label="Type" error={typeError} options={constants.REFERENCES_OPTIONS} onChange={changeType} onBlur={blurType} required />
-                <LogoLayout logo={logo} onUpload={setLogo} />
+                <LogoLayout logo={logo} required onUpload={setLogo} />
               </form>
             </ModalLayout>
           )}

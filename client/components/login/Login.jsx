@@ -4,7 +4,7 @@ import useHttp from "../../hooks/use-http";
 import useInput from "../../hooks/use-input";
 import { login } from "../../utilities/authentication";
 import { get, remember, forget } from "../../utilities/rememberMe";
-import { validUsername, validPassword } from "../../../utilities/validations";
+import { validUsername, validPassword, validText } from "../../../utilities/validations";
 import TextLayout from "../layouts/TextLayout";
 import CheckboxLayout from "../layouts/CheckboxLayout";
 import MessageLayout from "../layouts/MessageLayout";
@@ -59,7 +59,7 @@ const Login = () => {
   return (
     <form className={`${defaultStyle.auto} ${defaultStyle.smallContent} ${defaultStyle.marginBottom}`} onSubmit={loginUser} autoComplete="off" noValidate>
       <h1 className={defaultStyle.center}>Login</h1>
-      {error && (
+      {validText(error) && (
         <MessageLayout message={error} />
       )}
       <TextLayout type="text" value={username} label="Username" error={usernameError} onChange={changeUsername} onBlur={blurUsername} required><Person /></TextLayout>

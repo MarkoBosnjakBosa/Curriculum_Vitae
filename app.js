@@ -23,7 +23,7 @@ dotenv.config();
 
 app.use(cors({ origin: "*" }));
 app.use(express.json());
-app.use(express.static(`${path.resolve()}/bundle`));
+app.use(express.static(path.resolve("./bundle")));
 
 app.get("/getAbout", getAbout);
 app.get("/checkAuthentication", [isLoggedIn], checkAuthentication);

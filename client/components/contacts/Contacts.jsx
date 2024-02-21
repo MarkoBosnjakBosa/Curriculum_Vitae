@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { validText, validArray } from "../../../utilities/validations";
+import { validText } from "../../../utilities/validations";
 import constants from "../../../utilities/constants";
 import ContactsTable from "./ContactsTable";
-import NoValuesLayout from "../layouts/NoValuesLayout";
 import NotificationLayout from "../layouts/NotificationLayout";
 import style from "../../App.module.css";
 
@@ -26,11 +25,7 @@ const Contacts = (props) => {
   return (
     <>
       <h1 className={style.center}>Contacts</h1>
-      {validArray(contacts) ? (
-        <ContactsTable contacts={contacts} user={user} onCompleteEdit={completeEdit} onCompleteDeletion={completeDeletion} />
-      ) : (
-        <NoValuesLayout message="No contacts found!" />
-      )}
+      <ContactsTable contacts={contacts} user={user} onCompleteEdit={completeEdit} onCompleteDeletion={completeDeletion} />
       {validText(message) && (
         <NotificationLayout onClose={() => setMessage("")}>{message}</NotificationLayout>
       )}

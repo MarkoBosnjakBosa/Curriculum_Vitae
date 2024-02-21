@@ -41,7 +41,7 @@ const NavigationLayout = (props) => {
         <Typography sx={{ minWidth: "100px", cursor: "pointer" }} onClick={() => navigate("/overview")}>Overview</Typography>
         <Tooltip title={`Settings for ${username}`}>
           <IconButton aria-controls={isOpen ? "menu" : undefined} aria-haspopup="true" aria-expanded={isOpen ? "true" : undefined} onClick={(event) => setAnchor(event.currentTarget)}>
-            <Box src={avatar.data} alt={avatar.name} component="img" sx={{ width: "32px", height: "32px", borderRadius: "50%" }} />
+            <img src={avatar.data} alt={avatar.name} style={{ width: "32px", height: "32px", borderRadius: "50%" }} />
           </IconButton>
         </Tooltip>
       </Box>

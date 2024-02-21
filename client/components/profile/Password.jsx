@@ -2,7 +2,7 @@ import { useState } from "react";
 import useHttp from "../../hooks/use-http";
 import useInput from "../../hooks/use-input";
 import { get } from "../../utilities/authentication";
-import { validPassword } from "../../../utilities/validations";
+import { validPassword, validText } from "../../../utilities/validations";
 import TextLayout from "../layouts/TextLayout";
 import MessageLayout from "../layouts/MessageLayout";
 import NotificationLayout from "../layouts/NotificationLayout";
@@ -41,7 +41,7 @@ const Password = () => {
     <>
       <form className={`${defaultStyle.auto} ${defaultStyle.marginBottom} ${defaultStyle.smallContent}`} onSubmit={editPassword} autoComplete="off" noValidate>
         <h1 className={defaultStyle.center}>Password</h1>
-        {error && (
+        {validText(error) && (
           <MessageLayout message={error} />
         )}
         <TextLayout type="password" value={password} label="Password" error={passwordError} onChange={changePassword} onBlur={blurPassword} required><Lock /></TextLayout>

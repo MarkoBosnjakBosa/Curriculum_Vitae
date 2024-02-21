@@ -13,10 +13,9 @@ export const getProfile = async (request, response) => {
 
 export const editProfile = async (request, response) => {
   const { userId } = request.params;
-  const { firstName, lastName, email, telephone, birthday, birthday_de, address, address_de, languages, languages_de, profession, profession_de, linkedIn, xing, gitHub } = request.body;
-  const update = { firstName, lastName, email, telephone, birthday, birthday_de, address, address_de, languages, languages_de, profession, profession_de, linkedIn, xing, gitHub };
+  const { body } = request;
   const options = { new: true };
-  const user = await User.findByIdAndUpdate(userId, update, options);
+  const user = await User.findByIdAndUpdate(userId, body, options);
   user.password = null;
   user.authentication.secret = null;
   return response.status(200).json(user).end();
