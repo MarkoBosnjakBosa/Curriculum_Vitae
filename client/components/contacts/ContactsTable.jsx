@@ -13,13 +13,15 @@ const ContactsTable = (props) => {
 
   return (
     <div className={`${defaultStyle.auto} ${defaultStyle.bigContent}`}>
-      <SearchLayout onSearch={setSearch} />
       {validArray(contacts) ? (
-        <TableLayout labels={constants.CONTACTS_LABELS} usePaging>
-          {contacts.filter((contact) => contact.name.toLowerCase().includes(search) || contact.email.toLowerCase().includes(search) || contact.subject.toLowerCase().includes(search) || contact.message.toLowerCase().includes(search)).map((contact, index) => (
-            <Contact key={`${contact._id}_${new Date().getTime()}`} contact={contact} user={user} index={++index} onCompleteEdit={onCompleteEdit} onCompleteDeletion={onCompleteDeletion} />
-          ))}
-        </TableLayout>
+        <>
+          <SearchLayout onSearch={setSearch} />
+          <TableLayout labels={constants.CONTACTS_LABELS} usePaging>
+            {contacts.filter((contact) => contact.name.toLowerCase().includes(search) || contact.email.toLowerCase().includes(search) || contact.subject.toLowerCase().includes(search) || contact.message.toLowerCase().includes(search)).map((contact, index) => (
+              <Contact key={`${contact._id}_${new Date().getTime()}`} contact={contact} user={user} index={++index} onCompleteEdit={onCompleteEdit} onCompleteDeletion={onCompleteDeletion} />
+            ))}
+          </TableLayout>
+        </>
       ) : (
         <NoValuesLayout message="No contacts found!" />
       )}
