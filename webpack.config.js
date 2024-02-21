@@ -36,9 +36,7 @@ const properties = {
       }
     ]
   },
-  resolve: {
-    extensions: [".js", ".jsx"],
-  },
+  resolve: { extensions: [".js", ".jsx"] },
   performance: {
     hints: false,
     maxEntrypointSize: 512000,
