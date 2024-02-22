@@ -4,13 +4,13 @@ import path from "path";
 import nodemailer from "nodemailer";
 
 export const sendEmails = (email, firstName, lastName, contact) => {
-  sendAdministratorEmail(email, firstName, contact);
+  sendAdministratorEmail(email, firstName, lastName, contact);
   sendContactEmail(firstName, lastName, contact);
 };
 
-const sendAdministratorEmail = async (email, firstName, contact) => {
+const sendAdministratorEmail = async (email, firstName, lastName, contact) => {
   const compiledHtml = ejs.compile(fs.readFileSync(path.resolve("./server/templates/administrator.html"), { encoding: "UTF-8" }));
-  const html = compiledHtml({ firstName, contact });
+  const html = compiledHtml({ firstName, lastName, contact });
   await sendEmail(email, "New inquiry", html);
 };
 

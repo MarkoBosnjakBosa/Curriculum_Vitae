@@ -5,7 +5,7 @@
     <p>you have a new inquiry.</p>
     <p>
       Name: <strong><%= contact.name %></strong><br />
-      Email: <strong><%= contact.email %></strong><br />
+      Email: <a href="mailto:<%= contact.email %>?subject=<%= firstName %> <%= lastName %> - <%= new Date(contact.date).toLocaleString(contact.isGerman ? 'de-DE' : 'en-US', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }) %>" target="_blank" style="color: inherit; text-decoration: inherit"><strong><%= contact.email %></strong></a><br />
       Subject: <strong><%= contact.subject %></strong><br />
       Language: <strong><%= contact.isGerman ? "German" : "English" %></strong><br />
       Time: <strong><%= new Date(contact.date).toLocaleString("de-DE", { year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" }) %></strong><br />
