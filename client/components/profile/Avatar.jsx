@@ -9,7 +9,10 @@ const Avatar = (props) => {
 
   const { isLoading, error, sendRequest } = useHttp();
 
-  const completeEdit = (newAvatar) => onUpload(newAvatar);
+  const completeEdit = (newAvatar) => {
+    onUpload(newAvatar);
+    document.getElementById("avatar").value = null;
+  };
 
   const editAvatar = (event) => {
     const files = event.target.files;

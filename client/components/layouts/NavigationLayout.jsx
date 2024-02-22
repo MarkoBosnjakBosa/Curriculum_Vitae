@@ -18,8 +18,10 @@ const NavigationLayout = (props) => {
 
   useEffect(() => {
     const loadData = async () => {
-      const avatar = await loader();
-      if (validObject(avatar)) setAvatar(avatar);
+      if (!validObject(avatar)) {
+        const avatarData = await loader();
+        if (validObject(avatarData)) setAvatar(avatarData);
+      }
     };
     loadData();
   }, []);
