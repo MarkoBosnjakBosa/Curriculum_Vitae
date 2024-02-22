@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { validText } from "../../../utilities/validations";
 import Information from "./Information";
 import Avatar from "./Avatar";
 import NotificationLayout from "../layouts/NotificationLayout";
@@ -34,7 +35,7 @@ const Profile = (props) => {
           <Avatar userId={user._id} avatar={user.avatar} onUpload={editAvatar} />
         </Grid>
       </Grid>
-      {saved && (
+      {validText(saved) && (
         <NotificationLayout onClose={() => setSaved("")}>{saved}</NotificationLayout>
       )}
     </>

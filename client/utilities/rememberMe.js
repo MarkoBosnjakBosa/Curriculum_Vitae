@@ -3,9 +3,7 @@ export const remember = (username) => {
   localStorage.setItem("rememberMe", JSON.stringify(rememberMe));
 };
 
-export const forget = () => {
-  localStorage.removeItem("rememberMe");
-};
+export const forget = () => localStorage.removeItem("rememberMe");
 
 export const get = () => {
   try {

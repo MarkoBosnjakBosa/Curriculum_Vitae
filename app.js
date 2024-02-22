@@ -68,6 +68,4 @@ mongoose.connect(process.env.DATABASE_URL)
     console.log(error);
   });
 
-app.listen(process.env.PORT || process.env.BASE_URL.split(":")[2], () => {
-  console.log(`Curriculum Vitae listening on ${process.env.BASE_URL}!`);
-});
+app.listen(process.env.PORT || process.env.BASE_URL.split(":")[2], () => console.log(`Curriculum Vitae listening on ${process.env.BASE_URL}!`));

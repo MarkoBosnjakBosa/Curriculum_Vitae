@@ -3,9 +3,7 @@ export const login = (token, userId, username) => {
   localStorage.setItem("authentication", JSON.stringify(authentication));
 };
 
-export const logout = () => {
-  localStorage.removeItem("authentication");
-};
+export const logout = () => localStorage.removeItem("authentication");
 
 export const get = () => {
   try {
