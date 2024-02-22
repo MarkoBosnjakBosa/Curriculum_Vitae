@@ -76,4 +76,4 @@ export const validObjectId = (objectId) => objectId && /^[a-fA-F0-9]{24}$/.test(
 
 export const validObject = (object) => object && ((object.constructor === Object) || (object.constructor === User) || (object.constructor === Skill) || (object.constructor === PortfolioItem) || (object.constructor === ResumeItem) || (object.constructor === Reference) || (object.constructor === Contact)) && Object.keys(object).length;
 
-export const validArray = (array) => array && ((array.constructor === Array) || (array.constructor === FileList)) && array.length;
+export const validArray = (array) => array && ((array.constructor === Array) || (array.constructor === FileList) || (array.constructor === HTMLCollection)) && array.length;
