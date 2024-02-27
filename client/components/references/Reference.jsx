@@ -11,7 +11,7 @@ import TextLayout from "../layouts/TextLayout";
 import LogoLayout from "../layouts/LogoLayout";
 import SelectLayout from "../layouts/SelectLayout";
 import NotificationLayout from "../layouts/NotificationLayout";
-import defaultStyle from "../../App.module.css";
+import style from "../../App.module.css";
 import americanFlag from "../../../utilities/assets/americanFlag.png";
 import germanFlag from "../../../utilities/assets/germanFlag.png";
 import { TableRow, TableCell } from "@mui/material";
@@ -74,13 +74,13 @@ const Reference = (props) => {
       )}
       <TableRow>
         <TableCell align="right" rowSpan={2}>{index}</TableCell>
-        <TableCell align="right" rowSpan={2}><img src={americanFlag} alt="American flag" className={defaultStyle.flag} /><br /><img src={germanFlag} alt="German flag" className={defaultStyle.flag} /></TableCell>
+        <TableCell align="right" rowSpan={2}><img src={americanFlag} alt="American flag" className={style.flag} /><br /><img src={germanFlag} alt="German flag" className={style.flag} /></TableCell>
         <TableCell align="right" rowSpan={2}>{reference.title}<br />{reference.title_de}</TableCell>
         <TableCell align="right" rowSpan={2}>{reference.duration}<br />{reference.duration_de}</TableCell>
-        <TableCell align="right" rowSpan={2} className={defaultStyle.pointer} onClick={() => setIsDisplayed(true)}>{reference.logo.name}</TableCell>
+        <TableCell align="right" rowSpan={2} className={style.pointer} onClick={() => setIsDisplayed(true)}>{reference.logo.name}</TableCell>
         <TableCell align="right" rowSpan={2}>{convertString(reference.type, true)}</TableCell>
-        <TableCell align="right" className={defaultStyle.actions}>
-          <Edit className={defaultStyle.pointer} onClick={() => setIsEditing(true)} />
+        <TableCell align="right" className={style.actions}>
+          <Edit className={style.pointer} onClick={() => setIsEditing(true)} />
           <Delete route={`/deleteReference/${reference._id}`} message={`Delete reference ${reference.title}?`} onCompleteDeletion={() => onCompleteDeletion(reference._id, reference.type, reference.title)} />
           {isEditing && (
             <ModalLayout title="Edit reference" isValid={formIsValid} isLoading={isLoading} onClose={closeDialog} onSave={editReference}>

@@ -4,7 +4,7 @@ import constants from "../../../utilities/constants";
 import NewResumeItem from "./NewResumeItem";
 import ResumeTable from "./ResumeTable";
 import NotificationLayout from "../layouts/NotificationLayout";
-import defaultStyle from "../../App.module.css";
+import style from "../../App.module.css";
 import { Button } from "@mui/material";
 import { East, West } from "@mui/icons-material";
 
@@ -46,19 +46,19 @@ const Resume = (props) => {
 
   return (
     <>
-      <h1 className={defaultStyle.center}>Resume</h1>
+      <h1 className={style.center}>Resume</h1>
       <NewResumeItem onCompleteCreation={completeCreation} />
       {(step === 0) ? (
         <>
           <ResumeTable resume={experienceResume} type={constants.EXPERIENCE_RESUME} onCompleteEdit={completeEdit} onCompleteDeletion={completeDeletion} />
-          <div className={`${defaultStyle.auto} ${defaultStyle.alignRight} ${defaultStyle.marginTop} ${defaultStyle.marginBottom} ${defaultStyle.bigContent}`}>
+          <div className={`${style.auto} ${style.alignRight} ${style.marginTop} ${style.marginBottom} ${style.bigContent}`}>
             <Button type="button" variant="contained" onClick={() => setStep(1)}><East /></Button>
           </div>
         </>
       ) : (
         <>
           <ResumeTable resume={educationResume} type={constants.EDUCATION_RESUME} onCompleteEdit={completeEdit} onCompleteDeletion={completeDeletion} />
-          <div className={`${defaultStyle.auto} ${defaultStyle.marginTop} ${defaultStyle.marginBottom} ${defaultStyle.bigContent}`}>
+          <div className={`${style.auto} ${style.marginTop} ${style.marginBottom} ${style.bigContent}`}>
             <Button type="button" variant="contained" onClick={() => setStep(0)}><West /></Button>
           </div>
         </>

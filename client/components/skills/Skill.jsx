@@ -6,7 +6,7 @@ import Delete from "../actions/Delete";
 import ModalLayout from "../layouts/ModalLayout";
 import TextLayout from "../layouts/TextLayout";
 import NotificationLayout from "../layouts/NotificationLayout";
-import defaultStyle from "../../App.module.css";
+import style from "../../App.module.css";
 import { TableRow, TableCell } from "@mui/material";
 import { Edit, Subtitles } from "@mui/icons-material";
 
@@ -49,8 +49,8 @@ const Skill = (props) => {
     <TableRow>
       <TableCell align="right">{index}</TableCell>
       <TableCell align="right">{skill.title}</TableCell>
-      <TableCell align="right" className={defaultStyle.actions}>
-        <Edit className={defaultStyle.pointer} onClick={() => setIsEditing(true)} />
+      <TableCell align="right" className={style.actions}>
+        <Edit className={style.pointer} onClick={() => setIsEditing(true)} />
         <Delete route={`/deleteSkill/${skill._id}`} message={`Delete skill ${skill.title}?`} onCompleteDeletion={() => onCompleteDeletion(skill._id, skill.title)} />
         {isEditing && (
           <ModalLayout title="Edit skill" isValid={titleIsValid} isLoading={isLoading} onClose={closeDialog} onSave={editSkill}>

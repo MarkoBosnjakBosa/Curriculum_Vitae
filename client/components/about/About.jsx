@@ -9,7 +9,7 @@ import References from "./References";
 import Contact from "./Contact";
 import ActionLayout from "../layouts/ActionLayout";
 import TitleLayout from "../layouts/TitleLayout";
-import defaultStyle from "../../App.module.css";
+import style from "../../App.module.css";
 
 const About = (props) => {
   const { data } = props;
@@ -64,13 +64,13 @@ const About = (props) => {
       <Resume ref={{ experienceRef, educationRef }} experienceResume={experienceResume} educationResume={educationResume} />
       <References ref={{ certificationsRef, customersRef }} certifications={certifications} customers={customers} />
       <Contact ref={contactRef} user={user} />
-      <div className={`${defaultStyle.center} ${defaultStyle.sectionMarginTop}`}>
+      <div className={`${style.center} ${style.sectionMarginTop}`}>
         <ActionLayout icon="fab fa-linkedin-in" value={user.linkedIn} />
         <ActionLayout icon="fab fa-xing" value={user.xing} />
         <ActionLayout icon="fab fa-github" value={user.gitHub} />
         <ActionLayout icon="fab fa-yahoo" value={user.email} />
       </div>
-      <TitleLayout title={`${user.firstName} ${user.lastName}`} customization={`${defaultStyle.marginTop} ${defaultStyle.marginBottom}`} />
+      <TitleLayout title={`${user.firstName} ${user.lastName}`} customization={`${style.marginTop} ${style.marginBottom}`} />
     </>
   );
 };

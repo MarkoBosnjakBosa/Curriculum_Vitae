@@ -6,7 +6,7 @@ import { validPassword, validText } from "../../../utilities/validations";
 import TextLayout from "../layouts/TextLayout";
 import MessageLayout from "../layouts/MessageLayout";
 import NotificationLayout from "../layouts/NotificationLayout";
-import defaultStyle from "../../App.module.css";
+import style from "../../App.module.css";
 import { Button } from "@mui/material";
 import { Lock, SaveAlt } from "@mui/icons-material";
 
@@ -39,13 +39,13 @@ const Password = () => {
 
   return (
     <>
-      <form className={`${defaultStyle.auto} ${defaultStyle.marginBottom} ${defaultStyle.smallContent}`} onSubmit={editPassword} autoComplete="off" noValidate>
-        <h1 className={defaultStyle.center}>Password</h1>
+      <form className={`${style.auto} ${style.marginBottom} ${style.smallContent}`} onSubmit={editPassword} autoComplete="off" noValidate>
+        <h1 className={style.center}>Password</h1>
         {validText(error) && (
           <MessageLayout message={error} />
         )}
         <TextLayout type="password" value={password} label="Password" error={passwordError} onChange={changePassword} onBlur={blurPassword} required><Lock /></TextLayout>
-        <div className={defaultStyle.alignRight}>
+        <div className={style.alignRight}>
           <Button type="submit" variant="contained" endIcon={<SaveAlt />} disabled={!passwordIsValid || isLoading}>{isLoading ? "Loading..." : "Save"}</Button>
         </div>
       </form>

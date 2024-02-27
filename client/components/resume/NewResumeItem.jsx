@@ -7,7 +7,7 @@ import ModalLayout from "../layouts/ModalLayout";
 import TextLayout from "../layouts/TextLayout";
 import SelectLayout from "../layouts/SelectLayout";
 import NotificationLayout from "../layouts/NotificationLayout";
-import defaultStyle from "../../App.module.css";
+import style from "../../App.module.css";
 import { Button } from "@mui/material";
 import { Add, Subtitles, Place, AccessTime, Description } from "@mui/icons-material";
 
@@ -71,7 +71,7 @@ const NewResumeItem = (props) => {
 
   return (
     <>
-      <div className={defaultStyle.center}><Button type="button" variant="contained" endIcon={<Add />} onClick={() => setIsOpen(true)}>New resume item</Button></div>
+      <div className={style.center}><Button type="button" variant="contained" endIcon={<Add />} onClick={() => setIsOpen(true)}>New resume item</Button></div>
       {isOpen && (
         <ModalLayout title="New resume item" isValid={formIsValid} isLoading={isLoading} onClose={closeDialog} onSave={createNewResumeItem}>
           <form autoComplete="off" noValidate>

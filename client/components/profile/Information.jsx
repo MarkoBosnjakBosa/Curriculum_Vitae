@@ -4,7 +4,7 @@ import useInput from "../../hooks/use-input";
 import { validName, validEmail, validTelephone, validDate, validText, validLink } from "../../../utilities/validations";
 import TextLayout from "../layouts/TextLayout";
 import NotificationLayout from "../layouts/NotificationLayout";
-import defaultStyle from "../../App.module.css";
+import style from "../../App.module.css";
 import { Button } from "@mui/material";
 import { Person, Edit, Email, PhoneIphone, Cake, NearMe, Language, Computer, LinkedIn, Share, GitHub, SaveAlt } from "@mui/icons-material";
 
@@ -66,7 +66,7 @@ const Information = (props) => {
   };
 
   return (
-    <form className={defaultStyle.marginBottom} onSubmit={editProfile} autoComplete="off" noValidate>
+    <form className={style.marginBottom} onSubmit={editProfile} autoComplete="off" noValidate>
       {error && (
         <NotificationLayout isError>{error}</NotificationLayout>
       )}
@@ -86,7 +86,7 @@ const Information = (props) => {
       <TextLayout type="text" value={linkedIn} label="LinkedIn" error={linkedInError} onChange={changeLinkedIn} onBlur={blurLinkedIn} required><LinkedIn /></TextLayout>
       <TextLayout type="text" value={xing} label="Xing" error={xingError} onChange={changeXing} onBlur={blurXing} required><Share /></TextLayout>
       <TextLayout type="text" value={gitHub} label="GitHub" error={gitHubError} onChange={changeGitHub} onBlur={blurGitHub} required><GitHub /></TextLayout>
-      <div className={defaultStyle.alignRight}>
+      <div className={style.alignRight}>
         <Button type="submit" variant="contained" endIcon={<SaveAlt />} disabled={!formIsValid || isLoading}>{isLoading ? "Loading..." : "Save"}</Button>
       </div>
     </form>

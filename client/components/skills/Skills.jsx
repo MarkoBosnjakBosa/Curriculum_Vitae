@@ -6,7 +6,7 @@ import Skill from "./Skill";
 import TableLayout from "../layouts/TableLayout";
 import NoValuesLayout from "../layouts/NoValuesLayout";
 import NotificationLayout from "../layouts/NotificationLayout";
-import defaultStyle from "../../App.module.css";
+import style from "../../App.module.css";
 
 const Skills = (props) => {
   const [skills, setSkills] = useState(props.skills);
@@ -31,10 +31,10 @@ const Skills = (props) => {
 
   return (
     <>
-      <h1 className={defaultStyle.center}>Skills</h1>
+      <h1 className={style.center}>Skills</h1>
       <NewSkill onCompleteCreation={completeCreation} />
       {validArray(skills) ? (
-        <TableLayout labels={constants.SKILLS_LABELS} customization={`${defaultStyle.auto} ${defaultStyle.mediumContent} ${defaultStyle.marginBottom}`}>
+        <TableLayout labels={constants.SKILLS_LABELS} customization={`${style.auto} ${style.mediumContent} ${style.marginBottom}`}>
           {skills.map((skill, index) => (
             <Skill key={`${skill._id}_${new Date().getTime()}`} skill={skill} index={++index} onCompleteEdit={completeEdit} onCompleteDeletion={completeDeletion} />
           ))}

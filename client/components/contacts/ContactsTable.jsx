@@ -5,14 +5,14 @@ import Contact from "./Contact";
 import SearchLayout from "../layouts/SearchLayout";
 import TableLayout from "../layouts/TableLayout";
 import NoValuesLayout from "../layouts/NoValuesLayout";
-import defaultStyle from "../../App.module.css";
+import style from "../../App.module.css";
 
 const ContactsTable = (props) => {
   const { contacts, user, onCompleteEdit, onCompleteDeletion } = props;
   const [search, setSearch] = useState("");
 
   return (
-    <div className={`${defaultStyle.auto} ${defaultStyle.bigContent}`}>
+    <div className={`${style.auto} ${style.bigContent}`}>
       {validArray(contacts) ? (
         <>
           <SearchLayout onSearch={setSearch} />

@@ -8,7 +8,7 @@ import TextLayout from "../layouts/TextLayout";
 import SelectLayout from "../layouts/SelectLayout";
 import LogoLayout from "../layouts/LogoLayout";
 import NotificationLayout from "../layouts/NotificationLayout";
-import defaultStyle from "../../App.module.css";
+import style from "../../App.module.css";
 import { Button } from "@mui/material";
 import { Add, Subtitles, CalendarMonth } from "@mui/icons-material";
 
@@ -63,7 +63,7 @@ const NewReference = (props) => {
 
   return (
     <>
-      <div className={defaultStyle.center}><Button type="button" variant="contained" endIcon={<Add />} onClick={() => setIsOpen(true)}>New reference</Button></div>
+      <div className={style.center}><Button type="button" variant="contained" endIcon={<Add />} onClick={() => setIsOpen(true)}>New reference</Button></div>
       {isOpen && (
         <ModalLayout title="New reference" isValid={formIsValid} isLoading={isLoading} onClose={closeDialog} onSave={createNewReference}>
           <form autoComplete="off" noValidate>

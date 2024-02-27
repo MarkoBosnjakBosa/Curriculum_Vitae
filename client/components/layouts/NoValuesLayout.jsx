@@ -1,10 +1,10 @@
-import defaultStyle from "../../App.module.css";
+import style from "../../App.module.css";
 
 const NoValuesLayout = (props) => {
   const { message } = props;
 
   return (
-    <div className={`${defaultStyle.center} ${defaultStyle.marginTop} ${defaultStyle.marginBottom}`}><strong>{message}</strong></div>
+    <div className={`${style.center} ${style.marginTop} ${style.marginBottom}`}><strong>{message}</strong></div>
   );
 };
 

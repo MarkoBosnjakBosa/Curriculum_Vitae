@@ -8,7 +8,7 @@ import { validUsername, validPassword, validText } from "../../../utilities/vali
 import TextLayout from "../layouts/TextLayout";
 import CheckboxLayout from "../layouts/CheckboxLayout";
 import MessageLayout from "../layouts/MessageLayout";
-import defaultStyle from "../../App.module.css";
+import style from "../../App.module.css";
 import { Button } from "@mui/material";
 import { Person, Lock, Login as LoginIcon, Home } from "@mui/icons-material";
 
@@ -57,16 +57,16 @@ const Login = () => {
   };
 
   return (
-    <form className={`${defaultStyle.auto} ${defaultStyle.smallContent} ${defaultStyle.marginBottom}`} onSubmit={loginUser} autoComplete="off" noValidate>
-      <h1 className={defaultStyle.center}>Login</h1>
+    <form className={`${style.auto} ${style.smallContent} ${style.marginBottom}`} onSubmit={loginUser} autoComplete="off" noValidate>
+      <h1 className={style.center}>Login</h1>
       {validText(error) && (
         <MessageLayout message={error} />
       )}
       <TextLayout type="text" value={username} label="Username" error={usernameError} onChange={changeUsername} onBlur={blurUsername} required><Person /></TextLayout>
       <TextLayout type="password" value={password} label="Password" error={passwordError} onChange={changePassword} onBlur={blurPassword} required><Lock /></TextLayout>
       <CheckboxLayout checked={rememberMe} label="Remember me?" onChange={(event) => setRememberMe(event.target.checked)} />
-      <Button type="submit" variant="contained" endIcon={<LoginIcon />} className={defaultStyle.fullWidth} disabled={!formIsValid || isLoading}>{isLoading ? "Loading..." : "Login"}</Button>
-      <Button type="button" color="success" variant="contained" endIcon={<Home />} className={`${defaultStyle.fullWidth} ${defaultStyle.marginTop}`} onClick={() => navigate("/")}>About</Button>
+      <Button type="submit" variant="contained" endIcon={<LoginIcon />} className={style.fullWidth} disabled={!formIsValid || isLoading}>{isLoading ? "Loading..." : "Login"}</Button>
+      <Button type="button" color="success" variant="contained" endIcon={<Home />} className={`${style.fullWidth} ${style.marginTop}`} onClick={() => navigate("/")}>About</Button>
     </form>
   );
 };

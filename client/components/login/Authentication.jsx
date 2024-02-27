@@ -5,7 +5,7 @@ import { login } from "../../utilities/authentication";
 import { validText, validToken } from "../../../utilities/validations";
 import TextLayout from "../layouts/TextLayout";
 import MessageLayout from "../layouts/MessageLayout";
-import defaultStyle from "../../App.module.css";
+import style from "../../App.module.css";
 import { Button } from "@mui/material";
 import { LockClock, Check } from "@mui/icons-material";
 
@@ -38,13 +38,13 @@ const Authentication = (props) => {
   };
 
   return (
-    <form className={`${defaultStyle.auto} ${defaultStyle.smallContent} ${defaultStyle.marginBottom}`} onSubmit={authenticate} autoComplete="off" noValidate>
-      <h1 className={defaultStyle.center}>Authentication</h1>
+    <form className={`${style.auto} ${style.smallContent} ${style.marginBottom}`} onSubmit={authenticate} autoComplete="off" noValidate>
+      <h1 className={style.center}>Authentication</h1>
       {validText(error) && (
         <MessageLayout message={error} />
       )}
       <TextLayout type="text" value={token} label="Token" error={tokenError} onChange={changeToken} onBlur={blurToken} required><LockClock /></TextLayout>
-      <div className={defaultStyle.alignRight}>
+      <div className={style.alignRight}>
         <Button type="submit" variant="contained" endIcon={<Check />} disabled={!tokenIsValid || isLoading}>{isLoading ? "Loading..." : "Submit"}</Button>
       </div>
     </form>

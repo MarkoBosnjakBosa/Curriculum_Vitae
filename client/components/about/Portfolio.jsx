@@ -3,7 +3,7 @@ import { getString } from "../../utilities/i18n";
 import TitleLayout from "../layouts/TitleLayout";
 import WrapperLayout from "../layouts/WrapperLayout";
 import ImagesLayout from "../layouts/ImagesLayout";
-import defaultStyle from "../../App.module.css";
+import style from "../../App.module.css";
 import { ImageList, useMediaQuery } from "@mui/material";
 
 const Portfolio = forwardRef((props, ref) => {
@@ -13,7 +13,7 @@ const Portfolio = forwardRef((props, ref) => {
 
   return (
     <>
-      <TitleLayout ref={ref} title={getString("cv.sections.portfolio")} customization={defaultStyle.sectionMarginTop} />
+      <TitleLayout ref={ref} title={getString("cv.sections.portfolio")} customization={style.sectionMarginTop} />
       <WrapperLayout hasActions onChangeStep={setStep}>
         <ImageList cols={mediaQuery ? 2 : 1}>
           {(step === 0) ? (

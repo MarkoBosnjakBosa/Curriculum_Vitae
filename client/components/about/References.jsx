@@ -3,7 +3,7 @@ import { getString } from "../../utilities/i18n";
 import TitleLayout from "../layouts/TitleLayout";
 import WrapperLayout from "../layouts/WrapperLayout";
 import CarouselLayout from "../layouts/CarouselLayout";
-import defaultStyle from "../../App.module.css";
+import style from "../../App.module.css";
 
 const References = forwardRef((props, ref) => {
   const { certifications, customers } = props;
@@ -11,9 +11,9 @@ const References = forwardRef((props, ref) => {
 
   return (
     <>
-      <TitleLayout ref={certificationsRef} title={getString("cv.sections.certifications")} customization={defaultStyle.sectionMarginTop} />
+      <TitleLayout ref={certificationsRef} title={getString("cv.sections.certifications")} customization={style.sectionMarginTop} />
       <WrapperLayout><CarouselLayout references={certifications} /></WrapperLayout>
-      <TitleLayout ref={customersRef} title={getString("cv.sections.customers")} customization={defaultStyle.sectionMarginTop} />
+      <TitleLayout ref={customersRef} title={getString("cv.sections.customers")} customization={style.sectionMarginTop} />
       <WrapperLayout><CarouselLayout references={customers} /></WrapperLayout>
     </>
   );

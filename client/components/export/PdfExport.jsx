@@ -1,6 +1,6 @@
 import { getString } from "../../utilities/i18n";
 import Pdf from "./Pdf";
-import defaultStyle from "../../App.module.css";
+import style from "../../App.module.css";
 import { usePDF } from "@react-pdf/renderer";
 
 const PdfExport = (props) => {
@@ -9,9 +9,9 @@ const PdfExport = (props) => {
 
   return (
     !instance.loading ? (
-      <a href={instance.url} download={`${getString("cv.pdf.file.name")}.pdf`} className={`${defaultStyle.button} ${defaultStyle.display} ${defaultStyle.white} ${defaultStyle.green} ${defaultStyle.pointer} ${defaultStyle.noLink}`}>{getString("cv.buttons.pdf.download")}</a>
+      <a href={instance.url} download={`${getString("cv.pdf.file.name")}.pdf`} className={`${style.button} ${style.display} ${style.white} ${style.green} ${style.pointer} ${style.noLink}`}>{getString("cv.buttons.pdf.download")}</a>
     ) : (
-      <a className={`${defaultStyle.button} ${defaultStyle.display} ${defaultStyle.white} ${defaultStyle.green}`} disabled>{getString("cv.texts.loading")}</a>
+      <a className={`${style.button} ${style.display} ${style.white} ${style.green}`} disabled>{getString("cv.texts.loading")}</a>
     )
   );
 };

@@ -9,7 +9,7 @@ import ModalLayout from "../layouts/ModalLayout";
 import TextLayout from "../layouts/TextLayout";
 import SelectLayout from "../layouts/SelectLayout";
 import NotificationLayout from "../layouts/NotificationLayout";
-import defaultStyle from "../../App.module.css";
+import style from "../../App.module.css";
 import americanFlag from "../../../utilities/assets/americanFlag.png";
 import germanFlag from "../../../utilities/assets/germanFlag.png";
 import { TableRow, TableCell } from "@mui/material";
@@ -74,14 +74,14 @@ const ResumeItem = (props) => {
     <>
       <TableRow>
         <TableCell align="right" rowSpan={2}>{index}</TableCell>
-        <TableCell align="right" rowSpan={2}><img src={americanFlag} alt="American flag" className={defaultStyle.flag} /><br /><img src={germanFlag} alt="German flag" className={defaultStyle.flag} /></TableCell>
+        <TableCell align="right" rowSpan={2}><img src={americanFlag} alt="American flag" className={style.flag} /><br /><img src={germanFlag} alt="German flag" className={style.flag} /></TableCell>
         <TableCell align="right" rowSpan={2}>{resumeItem.title}<br />{resumeItem.title_de}</TableCell>
         <TableCell align="right" rowSpan={2}>{resumeItem.workPlace}<br />{resumeItem.workPlace_de}</TableCell>
         <TableCell align="right" rowSpan={2}>{resumeItem.duration}<br />{resumeItem.duration_de}</TableCell>
         <TableCell align="right" rowSpan={2}>{resumeItem.description}<br />{resumeItem.description_de}</TableCell>
         <TableCell align="right" rowSpan={2}>{convertString(resumeItem.type, true)}</TableCell>
-        <TableCell align="right" rowSpan={2} className={defaultStyle.actions}>
-          <Edit className={defaultStyle.pointer} onClick={() => setIsEditing(true)} />
+        <TableCell align="right" rowSpan={2} className={style.actions}>
+          <Edit className={style.pointer} onClick={() => setIsEditing(true)} />
           <Delete route={`/deleteResumeItem/${resumeItem._id}`} message={`Delete resume item ${resumeItem.title}?`} onCompleteDeletion={() => onCompleteDeletion(resumeItem._id, resumeItem.type, resumeItem.title)} />
           {isEditing && (
             <ModalLayout title="Edit resume item" isValid={formIsValid} isLoading={isLoading} onClose={closeDialog} onSave={editResumeItem}>

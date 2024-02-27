@@ -4,7 +4,7 @@ import constants from "../../../utilities/constants";
 import NewPortfolioItem from "./NewPortfolioItem";
 import PortfolioTable from "./PortfolioTable";
 import NotificationLayout from "../layouts/NotificationLayout";
-import defaultStyle from "../../App.module.css";
+import style from "../../App.module.css";
 import { Button } from "@mui/material";
 import { East, West } from "@mui/icons-material";
 
@@ -52,27 +52,27 @@ const Portfolio = (props) => {
 
   return (
     <>
-      <h1 className={defaultStyle.center}>Portfolio</h1>
+      <h1 className={style.center}>Portfolio</h1>
       <NewPortfolioItem onCompleteCreation={completeCreation} />
       {(step === 0) ? (
         <>
           <PortfolioTable portfolio={workPortfolio} type={constants.WORK_PORTFOLIO} onCompleteEdit={completeEdit} onCompleteDeletion={completeDeletion} />
-          <div className={`${defaultStyle.auto} ${defaultStyle.alignRight} ${defaultStyle.marginTop} ${defaultStyle.marginBottom} ${defaultStyle.bigContent}`}>
+          <div className={`${style.auto} ${style.alignRight} ${style.marginTop} ${style.marginBottom} ${style.bigContent}`}>
             <Button type="button" variant="contained" onClick={() => setStep(1)}><East /></Button>
           </div>
         </>
       ) : (step === 1) ? (
         <>
           <PortfolioTable portfolio={personalPortfolio} type={constants.PERSONAL_PORTFOLIO} onCompleteEdit={completeEdit} onCompleteDeletion={completeDeletion} />
-          <div className={`${defaultStyle.auto} ${defaultStyle.marginTop} ${defaultStyle.marginBottom} ${defaultStyle.bigContent}`}>
+          <div className={`${style.auto} ${style.marginTop} ${style.marginBottom} ${style.bigContent}`}>
             <Button type="button" variant="contained" onClick={() => setStep(0)}><West /></Button>
-            <Button type="button" variant="contained" className={defaultStyle.floatRight} onClick={() => setStep(2)}><East /></Button>
+            <Button type="button" variant="contained" className={style.floatRight} onClick={() => setStep(2)}><East /></Button>
           </div>
         </>
       ) : (
         <>
           <PortfolioTable portfolio={academicPortfolio} type={constants.ACADEMIC_PORTFOLIO} onCompleteEdit={completeEdit} onCompleteDeletion={completeDeletion} />
-          <div className={`${defaultStyle.auto} ${defaultStyle.marginTop} ${defaultStyle.marginBottom} ${defaultStyle.bigContent}`}>
+          <div className={`${style.auto} ${style.marginTop} ${style.marginBottom} ${style.bigContent}`}>
             <Button type="button" variant="contained" onClick={() => setStep(1)}><West /></Button>
           </div>
         </>

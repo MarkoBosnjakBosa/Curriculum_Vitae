@@ -5,7 +5,7 @@ import { validText } from "../../../utilities/validations";
 import ModalLayout from "../layouts/ModalLayout";
 import TextLayout from "../layouts/TextLayout";
 import NotificationLayout from "../layouts/NotificationLayout";
-import defaultStyle from "../../App.module.css";
+import style from "../../App.module.css";
 import { Button } from "@mui/material";
 import { Add, Subtitles } from "@mui/icons-material";
 
@@ -43,7 +43,7 @@ const NewSkill = (props) => {
 
   return (
     <>
-      <div className={`${defaultStyle.center} ${defaultStyle.marginBottom}`}><Button type="button" variant="contained" endIcon={<Add />} onClick={() => setIsOpen(true)}>New skill</Button></div>
+      <div className={`${style.center} ${style.marginBottom}`}><Button type="button" variant="contained" endIcon={<Add />} onClick={() => setIsOpen(true)}>New skill</Button></div>
       {isOpen && (
         <ModalLayout title="New skill" isValid={titleIsValid} isLoading={isLoading} onClose={closeDialog} onSave={createSkill}>
           <form autoComplete="off" noValidate>

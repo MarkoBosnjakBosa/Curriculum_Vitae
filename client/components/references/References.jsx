@@ -4,7 +4,7 @@ import constants from "../../../utilities/constants";
 import NewReference from "./NewReference";
 import ReferencesTable from "./ReferencesTable";
 import NotificationLayout from "../layouts/NotificationLayout";
-import defaultStyle from "../../App.module.css";
+import style from "../../App.module.css";
 import { Button } from "@mui/material";
 import { East, West } from "@mui/icons-material";
 
@@ -46,19 +46,19 @@ const References = (props) => {
 
   return (
     <>
-      <h1 className={defaultStyle.center}>References</h1>
+      <h1 className={style.center}>References</h1>
       <NewReference onCompleteCreation={completeCreation} />
       {(step === 0) ? (
         <>
           <ReferencesTable references={certifications} type={constants.CERTIFICATION_REFERENCE} onCompleteEdit={completeEdit} onCompleteDeletion={completeDeletion} />
-          <div className={`${defaultStyle.auto} ${defaultStyle.alignRight} ${defaultStyle.marginTop} ${defaultStyle.marginBottom} ${defaultStyle.bigContent}`}>
+          <div className={`${style.auto} ${style.alignRight} ${style.marginTop} ${style.marginBottom} ${style.bigContent}`}>
             <Button type="button" variant="contained" onClick={() => setStep(1)}><East /></Button>
           </div>
         </>
       ) : (
         <>
           <ReferencesTable references={customers} type={constants.CUSTOMER_REFERENCE} onCompleteEdit={completeEdit} onCompleteDeletion={completeDeletion} />
-          <div className={`${defaultStyle.auto} ${defaultStyle.marginTop} ${defaultStyle.marginBottom} ${defaultStyle.bigContent}`}>
+          <div className={`${style.auto} ${style.marginTop} ${style.marginBottom} ${style.bigContent}`}>
             <Button type="button" variant="contained" onClick={() => setStep(0)}><West /></Button>
           </div>
         </>

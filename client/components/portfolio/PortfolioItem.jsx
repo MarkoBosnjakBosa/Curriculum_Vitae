@@ -12,7 +12,7 @@ import TextLayout from "../layouts/TextLayout";
 import SelectLayout from "../layouts/SelectLayout";
 import LogoLayout from "../layouts/LogoLayout";
 import NotificationLayout from "../layouts/NotificationLayout";
-import defaultStyle from "../../App.module.css";
+import style from "../../App.module.css";
 import { TableRow, TableCell } from "@mui/material";
 import { Edit, Subtitles, Link as LinkIcon } from "@mui/icons-material";
 
@@ -71,10 +71,10 @@ const PortfolioItem = (props) => {
         <TableCell align="right">{index}</TableCell>
         <TableCell align="right">{portfolioItem.title}</TableCell>
         <TableCell align="right"><Link value={portfolioItem.link} /></TableCell>
-        <TableCell align="right" className={defaultStyle.pointer} onClick={() => setIsDisplayed(true)}>{portfolioItem.logo.name}</TableCell>
+        <TableCell align="right" className={style.pointer} onClick={() => setIsDisplayed(true)}>{portfolioItem.logo.name}</TableCell>
         <TableCell align="right">{convertString(portfolioItem.type, true)}</TableCell>
-        <TableCell align="right" className={defaultStyle.actions}>
-          <Edit className={defaultStyle.pointer} onClick={() => setIsEditing(true)} />
+        <TableCell align="right" className={style.actions}>
+          <Edit className={style.pointer} onClick={() => setIsEditing(true)} />
           <Delete route={`/deletePortfolioItem/${portfolioItem._id}`} message={`Delete portfolio item ${portfolioItem.title}?`} onCompleteDeletion={() => onCompleteDeletion(portfolioItem._id, portfolioItem.type, portfolioItem.title)} />
           {isEditing && (
             <ModalLayout title="Edit portfolio item" isValid={formIsValid} isLoading={isLoading} onClose={closeDialog} onSave={editPortfolioItem}>

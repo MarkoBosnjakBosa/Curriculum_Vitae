@@ -8,7 +8,7 @@ import TextLayout from "../layouts/TextLayout";
 import SelectLayout from "../layouts/SelectLayout";
 import LogoLayout from "../layouts/LogoLayout";
 import NotificationLayout from "../layouts/NotificationLayout";
-import defaultStyle from "../../App.module.css";
+import style from "../../App.module.css";
 import { Button } from "@mui/material";
 import { Add, Subtitles, Link } from "@mui/icons-material";
 
@@ -57,7 +57,7 @@ const NewPortfolioItem = (props) => {
 
   return (
     <>
-      <div className={defaultStyle.center}><Button type="button" variant="contained" endIcon={<Add />} onClick={() => setIsOpen(true)}>New portfolio item</Button></div>
+      <div className={style.center}><Button type="button" variant="contained" endIcon={<Add />} onClick={() => setIsOpen(true)}>New portfolio item</Button></div>
       {isOpen && (
         <ModalLayout title="New portfolio item" isValid={formIsValid} isLoading={isLoading} onClose={closeDialog} onSave={createNewPortfolioItem}>
           <form autoComplete="off" noValidate>
