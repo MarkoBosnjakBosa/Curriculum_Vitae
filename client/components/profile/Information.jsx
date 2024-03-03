@@ -6,7 +6,7 @@ import TextLayout from "../layouts/TextLayout";
 import NotificationLayout from "../layouts/NotificationLayout";
 import style from "../../App.module.css";
 import { Button } from "@mui/material";
-import { Person, Edit, Email, PhoneIphone, Cake, NearMe, Language, Computer, LinkedIn, Share, GitHub, SaveAlt } from "@mui/icons-material";
+import { Person, Edit, Email, PhoneIphone, Cake, NearMe, Language, Computer, LinkedIn, Share, GitHub, Check } from "@mui/icons-material";
 
 const Information = (props) => {
   const { user, onEdit } = props;
@@ -87,7 +87,7 @@ const Information = (props) => {
       <TextLayout type="text" value={xing} label="Xing" error={xingError} onChange={changeXing} onBlur={blurXing} required><Share /></TextLayout>
       <TextLayout type="text" value={gitHub} label="GitHub" error={gitHubError} onChange={changeGitHub} onBlur={blurGitHub} required><GitHub /></TextLayout>
       <div className={style.alignRight}>
-        <Button type="submit" variant="contained" endIcon={<SaveAlt />} disabled={!formIsValid || isLoading}>{isLoading ? "Loading..." : "Save"}</Button>
+        <Button type="submit" variant="contained" endIcon={<Check />} disabled={!formIsValid || isLoading}>{isLoading ? "Loading..." : "Save"}</Button>
       </div>
     </form>
   );

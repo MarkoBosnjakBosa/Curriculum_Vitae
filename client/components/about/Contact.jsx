@@ -12,7 +12,7 @@ import defaultStyle from "../../App.module.css";
 import style from "./About.module.css";
 import Grid from "@mui/material/Unstable_Grid2";
 import Button from "@mui/material/Button";
-import { Person, Email, Subject } from "@mui/icons-material";
+import { Person, Email, Subject, Check } from "@mui/icons-material";
 
 const Contact = forwardRef((props, ref) => {
   const { user } = props;
@@ -73,7 +73,7 @@ const Contact = forwardRef((props, ref) => {
                 <TextLayout type="text" value={subject} label={getString("cv.labels.subject")} error={subjectError} onChange={changeSubject} onBlur={blurSubject} required><Subject /></TextLayout>
                 <TextLayout type="text" value={message} label={getString("cv.labels.message")} error={messageError} onChange={changeMessage} onBlur={blurMessage} multiline required></TextLayout>
                 <div className={defaultStyle.alignRight}>
-                  <Button type="submit" variant="contained" color="success" disabled={!formIsValid || isLoading}>{isLoading ? getString("cv.texts.loading") : getString("cv.buttons.submit")}</Button>
+                  <Button type="submit" variant="contained" color="success" endIcon={<Check />} disabled={!formIsValid || isLoading}>{isLoading ? getString("cv.texts.loading") : getString("cv.buttons.submit")}</Button>
                 </div>
               </form>
             </Grid>

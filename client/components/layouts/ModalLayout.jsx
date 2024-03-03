@@ -1,4 +1,5 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
+import { Check, Close } from "@mui/icons-material";
 
 const ModalLayout = (props) => {
   const { title, isValid, isLoading, onClose, onSave, children } = props;
@@ -8,8 +9,8 @@ const ModalLayout = (props) => {
       <DialogTitle>{title}</DialogTitle>
       <DialogContent>{children}</DialogContent>
       <DialogActions>
-        <Button onClick={onClose} disabled={isLoading}>Cancel</Button>
-        <Button variant="contained" onClick={onSave} disabled={!isValid || isLoading}>{isLoading ? "Loading..." : "Save"}</Button>
+        <Button type="button" endIcon={<Close />} onClick={onClose} disabled={isLoading}>Cancel</Button>
+        <Button type="button" variant="contained" endIcon={<Check />} onClick={onSave} disabled={!isValid || isLoading}>{isLoading ? "Loading..." : "Save"}</Button>
       </DialogActions>
     </Dialog>
   );

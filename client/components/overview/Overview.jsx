@@ -88,7 +88,7 @@ const Overview = (props) => {
         </Grid>
       </Grid>
       <div className={`${defaultStyle.center} ${defaultStyle.marginBottom}`}>
-        <Button variant="contained" endIcon={<Edit />} onClick={() => navigate("/profile")}>Edit</Button>
+        <Button type="button" variant="contained" endIcon={<Edit />} onClick={() => navigate("/profile")}>Edit</Button>
       </div>
     </>
   );

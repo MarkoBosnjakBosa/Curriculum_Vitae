@@ -8,7 +8,7 @@ import MessageLayout from "../layouts/MessageLayout";
 import NotificationLayout from "../layouts/NotificationLayout";
 import style from "../../App.module.css";
 import { Button } from "@mui/material";
-import { Lock, SaveAlt } from "@mui/icons-material";
+import { Lock, Check } from "@mui/icons-material";
 
 const Password = () => {
   const [isSaved, setIsSaved] = useState(false);
@@ -46,7 +46,7 @@ const Password = () => {
         )}
         <TextLayout type="password" value={password} label="Password" error={passwordError} onChange={changePassword} onBlur={blurPassword} required><Lock /></TextLayout>
         <div className={style.alignRight}>
-          <Button type="submit" variant="contained" endIcon={<SaveAlt />} disabled={!passwordIsValid || isLoading}>{isLoading ? "Loading..." : "Save"}</Button>
+          <Button type="submit" variant="contained" endIcon={<Check />} disabled={!passwordIsValid || isLoading}>{isLoading ? "Loading..." : "Save"}</Button>
         </div>
       </form>
       {isSaved && (
