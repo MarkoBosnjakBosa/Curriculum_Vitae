@@ -6,7 +6,7 @@ Webpack and React
 Login system by using JsonWebToken  
 Authentication through Bearer tokens (middleware)  
 Two-factor authentication by using Speakeasy and QRCode  
-Password encryption by using Bcryptjs  
+Password encryption by using Bcrypt.js  
 Export of PDF files  
 Multilingual pages (English and German)  
 Routing by using React Router  
