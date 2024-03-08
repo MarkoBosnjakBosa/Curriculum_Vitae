@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import useHttp from "../../hooks/use-http";
 import useInput from "../../hooks/use-input";
-import { login } from "../../utilities/authentication";
+import { login, logout } from "../../utilities/authentication";
 import { validText, validToken } from "../../../utilities/validations";
 import TextLayout from "../layouts/TextLayout";
 import MessageLayout from "../layouts/MessageLayout";
 import style from "../../App.module.css";
 import { Button } from "@mui/material";
-import { LockClock, Check } from "@mui/icons-material";
+import { LockClock, Check, Close } from "@mui/icons-material";
 
 const Authentication = (props) => {
   const { userId } = props;
@@ -37,6 +37,11 @@ const Authentication = (props) => {
     );
   };
 
+  const cancel = () => {
+    logout();
+    navigate("/login");
+  };
+
   return (
     <form className={`${style.auto} ${style.smallContent} ${style.marginBottom}`} onSubmit={authenticate} autoComplete="off" noValidate>
       <h1 className={style.center}>Authentication</h1>
@@ -44,8 +49,11 @@ const Authentication = (props) => {
         <MessageLayout message={error} />
       )}
       <TextLayout type="text" value={token} label="Token" error={tokenError} onChange={changeToken} onBlur={blurToken} required><LockClock /></TextLayout>
-      <div className={style.alignRight}>
-        <Button type="submit" variant="contained" endIcon={<Check />} disabled={!tokenIsValid || isLoading}>{isLoading ? "Loading..." : "Submit"}</Button>
+      <div className={style.marginBottom}>
+        <Button type="button" variant="outlined" endIcon={<Close />} onClick={cancel}>Cancel</Button>
+        <div className={style.floatRight}>
+          <Button type="submit" variant="contained" endIcon={<Check />} disabled={!tokenIsValid || isLoading}>{isLoading ? "Loading..." : "Submit"}</Button>
+        </div>
       </div>
     </form>
   );

@@ -25,8 +25,8 @@ export const authenticate = async (request, response) => {
   const user = await User.findById(userId);
   const { username, authentication } = user;
   const { secret } = authentication;
-  const verified = speakeasy.totp.verify({ secret, encoding: "base32", token: otpToken });
-  if (verified) {
+  const isVerified = speakeasy.totp.verify({ secret, encoding: "base32", token: otpToken });
+  if (isVerified) {
     const token = jwt.sign({ userId }, process.env.JWT_SECRET_KEY);
     return response.status(200).json({ token, username }).end();
   }
