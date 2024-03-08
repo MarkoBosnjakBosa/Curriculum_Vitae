@@ -44,11 +44,11 @@ export const editPassword = async (request, response) => {
 export const getSecret = async (request, response) => {
   const { userId } = request.params;
   const secret = speakeasy.generateSecret({ name: process.env.APPLICATION_NAME });
-  const { otpauth_url, base32 } = secret;
-  const qrCode = await QRCode.toDataURL(otpauth_url);
+  const { base32, otpauth_url } = secret;
   const update = { "authentication.secret": base32 };
   const options = { new: true };
   await User.findByIdAndUpdate(userId, update, options);
+  const qrCode = await QRCode.toDataURL(otpauth_url);
   return response.status(200).json(qrCode).end();
 };
 
