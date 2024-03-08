@@ -7,7 +7,7 @@ export const getProfile = async (request, response) => {
   const { userId } = request.params;
   const user = await User.findById(userId);
   user.password = null;
-  user.authentication.secret = null;
+  user.authentication = null;
   return response.status(200).json(user).end();
 };
 
@@ -17,7 +17,7 @@ export const editProfile = async (request, response) => {
   const options = { new: true };
   const user = await User.findByIdAndUpdate(userId, body, options);
   user.password = null;
-  user.authentication.secret = null;
+  user.authentication = null;
   return response.status(200).json(user).end();
 };
 
@@ -44,7 +44,8 @@ export const editPassword = async (request, response) => {
 export const getSecret = async (request, response) => {
   const { userId } = request.params;
   const secret = speakeasy.generateSecret();
-  const { otpauth_url, base32 } = secret;
+  let { otpauth_url, base32 } = secret;
+  otpauth_url = { ...otpauth_url, label: "Curriculum Vitae" };
   const qrcode = await QRCode.toDataURL(otpauth_url);
   const update = { "authentication.secret": base32 };
   const options = { new: true };

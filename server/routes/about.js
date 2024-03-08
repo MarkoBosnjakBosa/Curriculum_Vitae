@@ -15,7 +15,7 @@ export const getAbout = async (request, response) => {
   const results = await Promise.all(queries);
   const user = results[0];
   user.password = null;
-  user.authentication.secret = null;
+  user.authentication = null;
   const skills = results[1];
   const workPortfolio = results[2].filter((portfolioItem) => portfolioItem.type === constants.WORK_PORTFOLIO);
   const personalPortfolio = results[2].filter((portfolioItem) => portfolioItem.type === constants.PERSONAL_PORTFOLIO);
