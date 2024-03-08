@@ -52,7 +52,7 @@ const Authentication = (props) => {
       <div className={style.marginBottom}>
         <Button type="button" variant="outlined" endIcon={<Close />} onClick={cancel}>Cancel</Button>
         <div className={style.floatRight}>
-          <Button type="submit" variant="contained" endIcon={<Check />} disabled={!tokenIsValid || isLoading}>{isLoading ? "Loading..." : "Submit"}</Button>
+          <Button type="submit" variant="contained" endIcon={<Check />} disabled={!tokenIsValid || isLoading}>{isLoading ? "Loading..." : "Verify"}</Button>
         </div>
       </div>
     </form>
