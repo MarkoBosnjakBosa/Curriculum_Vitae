@@ -7,7 +7,7 @@ export const getProfile = async (request, response) => {
   const { userId } = request.params;
   const user = await User.findById(userId);
   user.password = null;
-  user.authentication = null;
+  user.authentication.secret = null;
   return response.status(200).json(user).end();
 };
 
@@ -17,7 +17,7 @@ export const editProfile = async (request, response) => {
   const options = { new: true };
   const user = await User.findByIdAndUpdate(userId, body, options);
   user.password = null;
-  user.authentication = null;
+  user.authentication.secret = null;
   return response.status(200).json(user).end();
 };
 
