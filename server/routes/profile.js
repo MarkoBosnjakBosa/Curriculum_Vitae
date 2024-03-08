@@ -43,14 +43,13 @@ export const editPassword = async (request, response) => {
 
 export const getSecret = async (request, response) => {
   const { userId } = request.params;
-  const secret = speakeasy.generateSecret();
-  let { otpauth_url, base32 } = secret;
-  otpauth_url = { ...otpauth_url, label: "Curriculum Vitae" };
-  const qrcode = await QRCode.toDataURL(otpauth_url);
+  const secret = speakeasy.generateSecret({ name: process.env.APPLICATION_NAME });
+  const { otpauth_url, base32 } = secret;
+  const qrCode = await QRCode.toDataURL(otpauth_url);
   const update = { "authentication.secret": base32 };
   const options = { new: true };
   await User.findByIdAndUpdate(userId, update, options);
-  return response.status(200).json(qrcode).end();
+  return response.status(200).json(qrCode).end();
 };
 
 export const setAuthentication = async (request, response) => {
@@ -60,8 +59,8 @@ export const setAuthentication = async (request, response) => {
   if (isEnabled) {
     const { authentication } = user;
     const { secret } = authentication;
-    const verified = speakeasy.totp.verify({ secret, encoding: "base32", token });
-    if (verified) {
+    const isVerified = speakeasy.totp.verify({ secret, token, encoding: "base32" });
+    if (isVerified) {
       const update = { "authentication.enabled": true };
       const options = { new: true };
       await User.findByIdAndUpdate(userId, update, options);
