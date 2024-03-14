@@ -8,7 +8,7 @@ import constants from "./constants.js";
 
 export const validUsername = (username) => username && /^[a-z0-9_.-]*$/.test(username);
 
-export const validEmail = (email) => email && /\S+@\S+\.\S+/.test(email);
+export const validEmail = (email) => email && /\S+@\S+\.\S+$/.test(email);
 
 export const validPassword = (password) => password && /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(password);
 
@@ -25,7 +25,7 @@ export const validText = (text) => text && (text.constructor === String) && text
 
 export const validLink = (link) => link && /^(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})$/.test(link);
 
-export const validMimeType = (mimeType) => mimeType && mimeType.match("image.*");
+export const validMimeType = (mimeType) => mimeType && mimeType.includes("image/");
 
 export const validToken = (token) => token && /^\d{6}$/.test(token);
 
