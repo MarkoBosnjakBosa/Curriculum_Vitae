@@ -1,5 +1,5 @@
 import useHttp from "../../hooks/use-http";
-import { validMimeType, validArray } from "../../../utilities/validations";
+import { validFile, validMimeType, validArray } from "../../../utilities/validations";
 import NotificationLayout from "../layouts/NotificationLayout";
 import defaultStyle from "../../App.module.css";
 import style from "./Profile.module.css";
@@ -15,22 +15,24 @@ const Avatar = (props) => {
     const files = event.target.files;
     if (validArray(files)) {
       const file = files[0];
-      const mimeType = file.type;
-      if (validMimeType(mimeType)) {
-        const fileReader = new FileReader();
-        fileReader.onload = () => {
-          const avatar = { name: file.name, mimeType, data: fileReader.result };
-          sendRequest(
-            {
-              url: `${window.location.origin}/editAvatar/${userId}`,
-              method: "PUT",
-              body: JSON.stringify({ avatar }),
-              authentication: true
-            },
-            completeEdit
-          );
+      if (validFile(file)) {
+        const mimeType = file.type;
+        if (validMimeType(mimeType)) {
+          const fileReader = new FileReader();
+          fileReader.onload = () => {
+            const avatar = { name: file.name, mimeType, data: fileReader.result };
+            sendRequest(
+              {
+                url: `${window.location.origin}/editAvatar/${userId}`,
+                method: "PUT",
+                body: JSON.stringify({ avatar }),
+                authentication: true
+              },
+              completeEdit
+            );
+          }
+          fileReader.readAsDataURL(file);
         }
-        fileReader.readAsDataURL(file);
       }
     }
     document.getElementById("avatar").value = null;

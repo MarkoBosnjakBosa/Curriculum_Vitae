@@ -1,4 +1,4 @@
-import { validMimeType, validObject, validArray } from "../../../utilities/validations";
+import { validFile, validMimeType, validObject, validArray } from "../../../utilities/validations";
 import defaultStyle from "../../App.module.css";
 import style from "./Layouts.module.css";
 
@@ -9,14 +9,16 @@ const LogoLayout = (props) => {
     const files = event.target.files;
     if (validArray(files)) {
       const file = files[0];
-      const mimeType = file.type;
-      if (validMimeType(mimeType)) {
-        const fileReader = new FileReader();
-        fileReader.onload = () => {
-          const logo = { name: file.name, mimeType, data: fileReader.result };
-          onUpload(logo);
+      if (validFile(file)) {
+        const mimeType = file.type;
+        if (validMimeType(mimeType)) {
+          const fileReader = new FileReader();
+          fileReader.onload = () => {
+            const logo = { name: file.name, mimeType, data: fileReader.result };
+            onUpload(logo);
+          }
+          fileReader.readAsDataURL(file);
         }
-        fileReader.readAsDataURL(file);
       }
     }
     document.getElementById("logo").value = null;

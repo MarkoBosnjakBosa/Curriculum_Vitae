@@ -25,6 +25,8 @@ export const validText = (text) => text && (text.constructor === String) && text
 
 export const validLink = (link) => link && /^(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})$/.test(link);
 
+export const validFile = (file) => file && (file.constructor === File);
+
 export const validMimeType = (mimeType) => mimeType && mimeType.includes("image/");
 
 export const validToken = (token) => token && /^\d{6}$/.test(token);
