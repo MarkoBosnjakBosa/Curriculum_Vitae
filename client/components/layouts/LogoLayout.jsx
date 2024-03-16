@@ -19,6 +19,7 @@ const LogoLayout = (props) => {
         fileReader.readAsDataURL(file);
       }
     }
+    document.getElementById("logo").value = null;
   };
 
   return (

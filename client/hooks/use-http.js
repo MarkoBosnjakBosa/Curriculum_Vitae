@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import { get } from "../utilities/authentication";
+import { validArray } from "../utilities/validations";
 import { getString } from "../utilities/i18n";
 
 const useHttp = () => {
@@ -28,7 +29,7 @@ const useHttp = () => {
         const { status } = response;
         const { errors } = data;
         if (status === 400) {
-          if (errors instanceof Array) {
+          if (validArray(errors)) {
             const errorsString = errors.join(", ");
             if (url.includes("/saveContact")) setError(`${getString("cv.texts.validation")} ${errorsString}!`);
             else setError(`Check values: ${errorsString}!`);

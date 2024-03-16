@@ -9,10 +9,7 @@ const Avatar = (props) => {
 
   const { isLoading, error, sendRequest } = useHttp();
 
-  const completeEdit = (newAvatar) => {
-    onUpload(newAvatar);
-    document.getElementById("avatar").value = null;
-  };
+  const completeEdit = (newAvatar) => onUpload(newAvatar);
 
   const editAvatar = (event) => {
     const files = event.target.files;
@@ -36,6 +33,7 @@ const Avatar = (props) => {
         fileReader.readAsDataURL(file);
       }
     }
+    document.getElementById("avatar").value = null;
   };
 
   return (
