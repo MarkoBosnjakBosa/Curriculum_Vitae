@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { get } from "../utilities/authentication";
-import { validArray } from "../utilities/validations";
+import { validArray } from "../../utilities/validations";
 import { getString } from "../utilities/i18n";
 
 const useHttp = () => {
