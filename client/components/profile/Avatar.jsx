@@ -1,5 +1,5 @@
 import useHttp from "../../hooks/use-http";
-import { validFile, validMimeType, validArray } from "../../../utilities/validations";
+import { validFile, validMimeType, validObject, validArray } from "../../../utilities/validations";
 import NotificationLayout from "../layouts/NotificationLayout";
 import defaultStyle from "../../App.module.css";
 import style from "./Profile.module.css";
@@ -43,7 +43,9 @@ const Avatar = (props) => {
       {error && (
         <NotificationLayout isError>{error}</NotificationLayout>
       )}
-      <img src={avatar.data} alt={avatar.name} className={`${defaultStyle.marginBottom} ${defaultStyle.width} ${defaultStyle.circle} ${style.avatar}`} />
+      {validObject(avatar) ? (
+        <img src={avatar.data} alt={avatar.name} className={`${defaultStyle.marginBottom} ${defaultStyle.width} ${defaultStyle.circle} ${style.avatar}`} />
+      ) : ""}
       <div className={defaultStyle.marginBottom}>
         <label htmlFor="avatar" className={`${defaultStyle.display} ${defaultStyle.label} ${defaultStyle.width} ${defaultStyle.center} ${isLoading ? defaultStyle.noPointer : defaultStyle.pointer}`}><i className={isLoading ? "fa-solid fa-spinner" : "fas fa-cloud-upload-alt"}></i> <strong>{isLoading ? "Loading..." : "Avatar *"}</strong></label>
         <input type="file" accept="image/*" id="avatar" className={defaultStyle.none} onChange={editAvatar} disabled={isLoading} />
