@@ -17,4 +17,4 @@ Frontend custom form validations
 Backend custom form validations (middleware)  
 Form validation by using reCaptcha v3  
 Sending emails by using Nodemailer  
-Mongoose (queries, sorts)
+MongoDB - Mongoose (queries, sorts)
