@@ -26,7 +26,7 @@ const TextLayout = (props) => {
       error={error ? true : false}
       multiline={multiline}
       rows={multiline ? 2 : 1}
-      InputProps={label && (label.toLowerCase() === "password") ? {
+      InputProps={(label && (label.toLowerCase() === "password")) ? ({
         startAdornment: (
           <InputAdornment position="start">{children}</InputAdornment>
         ),
@@ -34,16 +34,16 @@ const TextLayout = (props) => {
           <Tooltip title="Password has to have at least 8 characters, including uppercase and lowercase letters, digits and special characters.">
             <InputAdornment position="end">
               <IconButton onClick={togglePassword} onMouseDown={(event) => event.preventDefault()}>
-                {(type === "password") ? <VisibilityOff /> : <Visibility />}
+                {(type === "password") ? (<VisibilityOff />) : (<Visibility />)}
               </IconButton>
             </InputAdornment>
           </Tooltip>
         )
-      } : {
+      }) : ({
         startAdornment: (
           <InputAdornment position="start">{children}{(label && (label.toLowerCase() === "telephone")) && (<Add />)}</InputAdornment>
         )
-      }}
+      })}
       variant="standard"
       disabled={disabled}
       required={required}
