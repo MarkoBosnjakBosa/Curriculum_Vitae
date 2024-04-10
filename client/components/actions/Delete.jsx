@@ -9,8 +9,8 @@ const Delete = (props) => {
   const { isLoading, error, sendRequest } = useHttp();
 
   const deleteValue = async () => {
-    const confirmed = window.confirm(message);
-    if (confirmed) {
+    const isConfirmed = window.confirm(message);
+    if (isConfirmed) {
       sendRequest(
         {
           url: `${window.location.origin}${route}`,

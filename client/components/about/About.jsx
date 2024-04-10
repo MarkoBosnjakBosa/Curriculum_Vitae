@@ -12,8 +12,7 @@ import TitleLayout from "../layouts/TitleLayout";
 import style from "../../App.module.css";
 
 const About = (props) => {
-  const { data } = props;
-  const { user, skills, workPortfolio, personalPortfolio, academicPortfolio, experienceResume, educationResume, certifications, customers } = data;
+  const { data: { user, skills, workPortfolio, personalPortfolio, academicPortfolio, experienceResume, educationResume, certifications, customers } } = props;
   const sections = constants.ABOUT_SECTIONS;
   const profileRef = useRef(null);
   const skillsRef = useRef(null);

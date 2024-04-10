@@ -10,14 +10,14 @@ import { Button } from "@mui/material";
 import { LockClock, Check, Close } from "@mui/icons-material";
 
 const Authentication = (props) => {
-  const { userId } = props;
+  const { userId, username } = props;
   const navigate = useNavigate();
 
   const { isLoading, error, sendRequest } = useHttp();
   const { value: token, isValid: tokenIsValid, error: tokenError, changeValue: changeToken, blur: blurToken, resetValue: resetToken } = useInput(validToken);
 
   const completeAuthentication = (data) => {
-    const { token, username } = data;
+    const { token } = data;
     login(token, userId, username);
     resetToken();
     navigate("/overview");

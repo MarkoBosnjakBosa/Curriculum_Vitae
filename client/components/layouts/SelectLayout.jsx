@@ -7,8 +7,8 @@ const SelectLayout = (props) => {
 
   return (
     <FormControl error={error ? true : false} required={required ? true : false} fullWidth className={style.field}>
-      <InputLabel id={label}>{label}</InputLabel>
-      <Select value={value ? options.filter((option) => option.id === value)[0] : ""} label={label} labelId={label} onChange={onChange} onBlur={onBlur}>
+      <InputLabel>{label}</InputLabel>
+      <Select value={value ? options.find((option) => option.id === value) : ""} label={label} onChange={onChange} onBlur={onBlur}>
         {options.map((option) => (
           <MenuItem key={option.id} value={option}>{option.title}</MenuItem>
         ))}

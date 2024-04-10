@@ -20,7 +20,7 @@ const user = new mongoose.Schema({
   gitHub: { type: String, default: "" },
   avatar: { name: String, mimeType: String, data: String },
   authentication: {
-    enabled: { type: Boolean, default: false },
+    isEnabled: { type: Boolean, default: false },
     secret: { type: String, default: "" }
   }
 }, { minimize: false });

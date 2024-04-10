@@ -57,18 +57,17 @@ export const setAuthentication = async (request, response) => {
   const { isEnabled, token } = request.body;
   const user = await User.findById(userId);
   if (isEnabled) {
-    const { authentication } = user;
-    const { secret } = authentication;
+    const { authentication: { secret } } = user;
     const isVerified = speakeasy.totp.verify({ secret, token, encoding: "base32" });
     if (isVerified) {
-      const update = { "authentication.enabled": true };
+      const update = { "authentication.isEnabled": true };
       const options = { new: true };
       await User.findByIdAndUpdate(userId, update, options);
       return response.status(200).send(isEnabled).end();
     }
     else return response.status(400).json({ errors: "The authentication token is not valid!" }).end();
   } else {
-    const update = { "authentication.enabled": false, "authentication.secret": "" };
+    const update = { "authentication.isEnabled": false, "authentication.secret": "" };
     const options = { new: true };
     await User.findByIdAndUpdate(userId, update, options);
     return response.status(200).send(isEnabled).end();

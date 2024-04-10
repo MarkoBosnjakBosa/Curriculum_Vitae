@@ -9,8 +9,6 @@ const Avatar = (props) => {
 
   const { isLoading, error, sendRequest } = useHttp();
 
-  const completeEdit = (newAvatar) => onUpload(newAvatar);
-
   const editAvatar = (event) => {
     const files = event.target.files;
     if (validArray(files)) {
@@ -28,7 +26,7 @@ const Avatar = (props) => {
                 body: JSON.stringify({ avatar }),
                 authentication: true
               },
-              completeEdit
+              onUpload
             );
           }
           fileReader.readAsDataURL(file);

@@ -5,8 +5,7 @@ import NavigationLayout from "../components/layouts/NavigationLayout";
 import MessageLayout from "../components/layouts/MessageLayout";
 
 const PasswordPage = () => {
-  const data = useLoaderData();
-  const { isLoggedIn } = data;
+  const { isLoggedIn } = useLoaderData();
 
   return (
     isLoggedIn ? (

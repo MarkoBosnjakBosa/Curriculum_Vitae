@@ -1,7 +1,7 @@
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
 import AboutPage, { loader as aboutLoader } from "./pages/AboutPage";
 import LoginPage, { loader as loginLoader } from "./pages/LoginPage";
-import AuthenticationPage, { loader as authenticationLoader } from "./pages/AuthenticationPage";
+import AuthenticationPage from "./pages/AuthenticationPage";
 import OverviewPage, { loader as overviewLoader } from "./pages/OverviewPage";
 import ProfilePage, { loader as profileLoader } from "./pages/ProfilePage";
 import PasswordPage, { loader as passwordLoader } from "./pages/PasswordPage";
@@ -18,7 +18,7 @@ const router = createBrowserRouter(
     <Route path="/">
       <Route index element={<AboutPage />} loader={aboutLoader} />
       <Route path="/login" element={<LoginPage />} loader={loginLoader} />
-      <Route path="/authentication" element={<AuthenticationPage />} loader={authenticationLoader} />
+      <Route path="/authentication" element={<AuthenticationPage />} />
       <Route path="/overview" element={<OverviewPage />} loader={overviewLoader} />
       <Route path="/profile" element={<ProfilePage />} loader={profileLoader} />
       <Route path="/password" element={<PasswordPage />} loader={passwordLoader} />

@@ -12,15 +12,13 @@ import { Warning, QrCodeScanner, Token, Check } from "@mui/icons-material";
 const Setup = (props) => {
   const [user, setUser] = useState(props.user);
   const { _id: userId, authentication } = user;
-  const { enabled } = authentication;
+  const { isEnabled } = authentication;
   const [QRCode, setQRCode] = useState("");
   const [isSaved, setIsSaved] = useState(false);
 
   const { isLoading: isSecretLoading, error: secretError, sendRequest: sendSecretRequest } = useHttp();
   const { isLoading: isAuthenticationLoading, error: authenticationError, sendRequest: sendAuthenticationRequest } = useHttp();
   const { value: token, isValid: tokenIsValid, error: tokenError, changeValue: changeToken, blur: blurToken, resetValue: resetToken } = useInput(validToken);
-
-  const completeSecretGetting = (data) => setQRCode(data);
 
   const getSecret = () => {
     sendSecretRequest(
@@ -29,12 +27,12 @@ const Setup = (props) => {
         method: "GET",
         authentication: true
       },
-      completeSecretGetting
+      setQRCode
     );
   };
 
   const completeAuthentication = (isEnabled) => {
-    setUser((previousUser) => ({ ...previousUser, authentication: { ...authentication, enabled: isEnabled } }));
+    setUser((previousUser) => ({ ...previousUser, authentication: { ...authentication, isEnabled } }));
     setQRCode("");
     resetToken();
     setIsSaved(true);
@@ -44,8 +42,8 @@ const Setup = (props) => {
     event.preventDefault();
     if (isEnabled && !tokenIsValid) return;
     if (!isEnabled) {
-      const confirmed = window.confirm("Disable 2FA?");
-      if (!confirmed) return;
+      const isConfirmed = window.confirm("Disable 2FA?");
+      if (!isConfirmed) return;
     }
 
     sendAuthenticationRequest(
@@ -71,10 +69,10 @@ const Setup = (props) => {
         )}
         <div className={defaultStyle.center}>
           <div className={defaultStyle.marginBottom}>
-            <Chip color={enabled ? "primary" : "error"} label={enabled ? "Enabled" : "Disabled"} className={`${defaultStyle.width} ${style.chip}`} />
+            <Chip color={isEnabled ? "primary" : "error"} label={isEnabled ? "Enabled" : "Disabled"} className={`${defaultStyle.width} ${style.chip}`} />
           </div>
           <div className={defaultStyle.marginBottom}>
-            {enabled ? (
+            {isEnabled ? (
               <>
                 <div className={defaultStyle.marginBottom}>
                   <strong>

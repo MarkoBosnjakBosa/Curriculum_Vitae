@@ -1,17 +1,15 @@
-import { useLoaderData } from "react-router-dom";
 import { get } from "../utilities/authentication";
-import { validText, validObjectId } from "../../utilities/validations";
+import { validUsername, validText, validObjectId } from "../../utilities/validations";
 import Authentication from "../components/login/Authentication";
 import MessageLayout from "../components/layouts/MessageLayout";
 
 const AuthenticationPage = () => {
-  const data = useLoaderData();
-  const { token, userId } = data;
+  const { token, userId, username } = get();
 
   return (
     <>
-      {(validObjectId(userId) && !validText(token)) ? (
-        <Authentication userId={userId} />
+      {(validObjectId(userId) && validUsername(username) && !validText(token)) ? (
+        <Authentication userId={userId} username={username} />
       ) : (
         <MessageLayout message="You are not able to authenticate right now!" isAlone />
       )}
@@ -20,8 +18,3 @@ const AuthenticationPage = () => {
 };
 
 export default AuthenticationPage;
-
-export const loader = () => {
-  const { token, userId } = get();
-  return { token, userId };
-};

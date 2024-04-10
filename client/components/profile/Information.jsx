@@ -48,8 +48,6 @@ const Information = (props) => {
 
   const formIsValid = firstNameIsValid && lastNameIsValid && emailIsValid && telephoneIsValid && birthdayIsValid && birthday_deIsValid && addressIsValid && address_deIsValid && languagesIsValid && languages_deIsValid && professionIsValid && profession_deIsValid && linkedInIsValid && xingIsValid && gitHubIsValid;
 
-  const completeEdit = (data) => onEdit(data);
-
   const editProfile = (event) => {
     event.preventDefault();
     if (!formIsValid) return;
@@ -61,7 +59,7 @@ const Information = (props) => {
         body: JSON.stringify({ firstName, lastName, email, telephone, birthday, birthday_de, address, address_de, languages, languages_de, profession, profession_de, linkedIn, xing, gitHub }),
         authentication: true
       },
-      completeEdit
+      onEdit
     );
   };
 

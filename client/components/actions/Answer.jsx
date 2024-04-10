@@ -9,8 +9,8 @@ const Answer = (props) => {
   const { isLoading, error, sendRequest } = useHttp();
 
   const answerContact = async () => {
-    const confirmed = window.confirm("Edit answer?");
-    if (confirmed) {
+    const isConfirmed = window.confirm("Edit answer?");
+    if (isConfirmed) {
       sendRequest(
         {
           url: `${window.location.origin}/answerContact/${contactId}`,
