@@ -32,14 +32,14 @@ const Login = () => {
   const formIsValid = usernameIsValid && passwordIsValid;
 
   const completeLogin = (data) => {
-    const { authentication, token, userId, username } = data;
+    const { token, userId } = data;
     if (rememberMe) remember(username);
     else forget();
     login(token, userId, username);
     resetUsername();
     resetPassword();
-    if (authentication) navigate("/authentication");
-    else navigate("/overview");
+    if (validText(token)) navigate("/overview");
+    else navigate("/authentication");
   };
 
   const loginUser = (event) => {

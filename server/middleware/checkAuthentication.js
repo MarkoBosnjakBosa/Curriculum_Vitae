@@ -3,7 +3,7 @@ import { validUser } from "../../utilities/validations.js";
 
 export const isLoggedIn = async (request, response, next) => {
   try {
-    const token = request.headers.authentication.split(" ")[1];
+    const token = request.headers.authentication.split("Bearer ")[1];
     const verifiedToken = jwt.verify(token, process.env.JWT_SECRET_KEY);
     const { userId } = verifiedToken;
     if (validUser(userId)) return next();

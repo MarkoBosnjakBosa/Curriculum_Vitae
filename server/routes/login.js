@@ -10,10 +10,10 @@ export const login = async (request, response) => {
   const match = bcryptjs.compareSync(password, user.password);
   if (match) {
     const { _id: userId, authentication: { isEnabled } } = user;
-    if (isEnabled) return response.status(200).json({ authentication: true, userId, username }).end();
+    if (isEnabled) return response.status(200).json({ userId }).end();
     else {
       const token = jwt.sign({ userId }, process.env.JWT_SECRET_KEY);
-      return response.status(200).json({ authentication: false, token, userId, username }).end();
+      return response.status(200).json({ token, userId }).end();
     }
   } else return response.status(401).json({ errors: "Password does not match!" }).end();
 };
