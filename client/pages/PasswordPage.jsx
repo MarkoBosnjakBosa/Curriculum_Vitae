@@ -5,7 +5,7 @@ import NavigationLayout from "../components/layouts/NavigationLayout";
 import MessageLayout from "../components/layouts/MessageLayout";
 
 const PasswordPage = () => {
-  const { isLoggedIn } = useLoaderData();
+  const isLoggedIn = useLoaderData();
 
   return (
     isLoggedIn ? (
@@ -21,7 +21,4 @@ const PasswordPage = () => {
 
 export default PasswordPage;
 
-export const loader = async () => {
-  const isLoggedIn = await checkAuthentication();
-  return { isLoggedIn };
-};
+export const loader = async () => await checkAuthentication();

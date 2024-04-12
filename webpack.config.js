@@ -16,7 +16,7 @@ const properties = {
   module: {
     rules: [
       {
-        test: /\.js|jsx/,
+        test: /\.js|jsx$/,
         use: {
           loader: "babel-loader",
           options: { presets: ["@babel/preset-env", "@babel/preset-react"], compact: true }

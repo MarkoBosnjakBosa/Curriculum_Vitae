@@ -30,7 +30,7 @@ const LogoLayout = (props) => {
         <div><img src={logo.data} alt={logo.name} className={style.logo} /></div>
       ) : ("")}
       <label htmlFor="logo" className={`${defaultStyle.label} ${defaultStyle.display} ${defaultStyle.pointer} ${defaultStyle.width}`}><i className="fas fa-cloud-upload-alt"></i> <strong>Logo {required && ("*")}</strong></label>
-      <input type="file" accept="image/*" id="logo" className={defaultStyle.none} onChange={uploadLogo} />
+      <input type="file" id="logo" accept="image/*" className={defaultStyle.none} onChange={uploadLogo} />
     </div>
   );
 };

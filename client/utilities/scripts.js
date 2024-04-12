@@ -9,7 +9,10 @@ export const loadScript = (url) => {
   const scripts = document.getElementsByTagName("script");
   let scriptFound = false;
   for (let i = 0; i < scripts.length; i++) {
-    if (scripts[i].src === url) scriptFound = true;
+    if (scripts[i].src === url) {
+      scriptFound = true;
+      break;
+    }
   }
   if (!scriptFound) {
     const script = document.createElement("script");

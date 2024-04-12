@@ -1,6 +1,6 @@
 import bcryptjs from "bcryptjs";
 import speakeasy from "speakeasy";
-import QRCode from "qrcode";
+import qrCode from "qrcode";
 import User from "../models/user.js";
 
 export const getProfile = async (request, response) => {
@@ -48,8 +48,8 @@ export const getSecret = async (request, response) => {
   const update = { "authentication.secret": base32 };
   const options = { new: true };
   await User.findByIdAndUpdate(userId, update, options);
-  const qrCode = await QRCode.toDataURL(otpauth_url);
-  return response.status(200).json(qrCode).end();
+  const newQRCode = await qrCode.toDataURL(otpauth_url);
+  return response.status(200).json(newQRCode).end();
 };
 
 export const setAuthentication = async (request, response) => {

@@ -68,7 +68,7 @@ const validateAvatar = async (request, response, next) => {
     if (validObject(avatar)) {
       if (validText(avatar.name) && validMimeType(avatar.mimeType) && validText(avatar.data)) return next();
     }
-    return response.status(400).json({ errors: "The avatar is not valid!" }).end();
+    return response.status(400).json({ errors: ["avatar"] }).end();
   }
   else return response.status(401).json({ errors: "The provided user does not exist!" }).end();
 };

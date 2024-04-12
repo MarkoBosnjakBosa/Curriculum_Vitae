@@ -8,7 +8,7 @@ import constants from "./constants.js";
 
 export const validUsername = (username) => username && /^[a-z0-9_.-]*$/.test(username);
 
-export const validEmail = (email) => email && /\S+@\S+\.\S+$/.test(email);
+export const validEmail = (email) => email && /^\S+@\S+\.\S+$/.test(email);
 
 export const validPassword = (password) => password && /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(password);
 
@@ -70,8 +70,8 @@ export const validItem = async (itemId, Model) => {
 export const validReCaptcha = async (reCaptchaVerificationUrl) => {
   const response = await fetch(reCaptchaVerificationUrl);
   if (!response.ok) return false;
-  const data = await response.json();
-  return data.success;
+  const { success } = await response.json();
+  return success;
 };
 
 export const validObjectId = (objectId) => objectId && /^[a-fA-F0-9]{24}$/.test(objectId);

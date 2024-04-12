@@ -13,7 +13,7 @@ const Setup = (props) => {
   const [user, setUser] = useState(props.user);
   const { _id: userId, authentication } = user;
   const { isEnabled } = authentication;
-  const [QRCode, setQRCode] = useState("");
+  const [qrCode, setQRCode] = useState("");
   const [isSaved, setIsSaved] = useState(false);
 
   const { isLoading: isSecretLoading, error: secretError, sendRequest: sendSecretRequest } = useHttp();
@@ -90,10 +90,10 @@ const Setup = (props) => {
                     QR code will be required, when logging in.
                   </strong>
                 </div>
-                <Button type="button" variant="contained" endIcon={<QrCodeScanner />} onClick={getSecret} disabled={isSecretLoading}>{isSecretLoading ? "Loading..." : "Generate QR Code"}</Button>
-                {validText(QRCode) && (
+                <Button type="button" variant="contained" endIcon={<QrCodeScanner />} onClick={getSecret} disabled={isSecretLoading}>{isSecretLoading ? "Loading..." : "Generate QR code"}</Button>
+                {validText(qrCode) && (
                   <form onSubmit={(event) => setAuthentication(true, event)} autoComplete="off" noValidate>
-                    <img src={QRCode} alt="QR Code" />
+                    <img src={qrCode} alt="QR code" />
                     <TextLayout type="text" value={token} label="Token" error={tokenError} onChange={changeToken} onBlur={blurToken} required><Token /></TextLayout>
                     <div className={defaultStyle.alignRight}>
                       <Button type="submit" variant="contained" endIcon={<Check />} disabled={!tokenIsValid || isAuthenticationLoading}>{isAuthenticationLoading ? "Loading..." : "Enable"}</Button>
