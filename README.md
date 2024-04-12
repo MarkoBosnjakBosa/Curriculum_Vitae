@@ -3,7 +3,7 @@ Curriculum Vitae
 Features:  
 REST API by using Express.js  
 Webpack and React  
-Login system by using JsonWebToken  
+Login system by using JSONWebToken  
 Authentication through Bearer tokens (middleware)  
 Two-factor authentication by using Speakeasy and QRCode  
 Password encryption by using Bcrypt.js  
