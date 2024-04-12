@@ -27,7 +27,7 @@ const properties = {
         use: ["style-loader", "css-loader"]
       },
       {
-        test: /\.(jpg|png)$/,
+        test: /\.jpg|png$/,
         type: "asset/resource"
       },
       {
