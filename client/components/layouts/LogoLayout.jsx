@@ -10,7 +10,7 @@ const LogoLayout = (props) => {
     if (validArray(files)) {
       const file = files[0];
       if (validFile(file)) {
-        const mimeType = file.type;
+        const { type: mimeType } = file;
         if (validMimeType(mimeType)) {
           const fileReader = new FileReader();
           fileReader.onload = () => {
